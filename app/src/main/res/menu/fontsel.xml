@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/smallerSize"
+        android:title="@string/smaller"/>
+    <item
+        android:id="@+id/biggerSize"
+        android:title="@string/bigger"/>
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/monoStyle"
+            android:title="@string/monospace"/>
+    </group>
+</menu>

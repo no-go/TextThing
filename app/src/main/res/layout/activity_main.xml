@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="click.dummer.textthing.MainActivity"
+    android:background="#a7bcfa"
+    android:paddingLeft="10dp"
+    android:paddingTop="10dp"
+    android:paddingRight="10dp"
+    android:paddingBottom="0dp">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:inputType="textMultiLine|textNoSuggestions"
+        android:ems="10"
+        android:id="@+id/editText"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:gravity="top"
+        android:textAlignment="gravity"
+        android:fontFamily="monospace"
+        android:background="#313079"
+        android:textColor="#a7bcfa"
+        android:textSize="@dimen/abc_text_size_title_material_toolbar"
+        android:layout_alignParentTop="true"
+        android:layout_above="@+id/optnBtn" />
+
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/fontOptions"
+        android:id="@+id/optnBtn"
+        android:background="@android:color/transparent"
+        android:padding="1dp"
+        android:typeface="monospace"
+        android:textColor="@android:color/black"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/editText" />
+</RelativeLayout>

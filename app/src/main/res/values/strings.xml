@@ -1,0 +1,10 @@
+<resources>
+    <string name="app_name">TextThing</string>
+    <string name="fontOptions">Font</string>
+    <string name="bigger">increase +</string>
+    <string name="smaller">decrease -</string>
+    <string name="monospace">monospace</string>
+    <string name="errAccess">error on access</string>
+    <string name="errWrite">error on write</string>
+    <string name="errRead">error on read</string>
+</resources>
