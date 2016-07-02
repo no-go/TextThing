@@ -1,7 +1,6 @@
 package click.dummer.textthing;
 
 import android.app.Activity;
-import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
@@ -109,10 +108,15 @@ public class MainActivity extends Activity {
                 e.printStackTrace();
             }
         } else {
-            File file = new File(
-                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                    App.PACKAGE_NAME
-            );
+            File file = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                file = new File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                        App.PACKAGE_NAME
+                );
+            } else {
+                file = new File(Environment.getExternalStorageDirectory() + "/Documents/"+App.PACKAGE_NAME);
+            }
 
             String path = file.getPath() + App.NOTE_FILENAME;
             try {
