@@ -5,9 +5,11 @@ TextThing is a simple text file editor for Android. You can use it via a file ma
 
 ![The App Icon](icon.png)
 
-## Screenshot
+## Screenshots
 
-![The blue colors are fixed and based on the 1980er C64 Homecomputer](screenshot.jpg)
+![The blue colors are fixed and based on the 1980er C64 Homecomputer](screenshot-6.0.1.jpg)
+
+![It runns under 4.1.1 Jelly Bean too.](screenshot-4.1.1.jpg)
 
 ## License
 
