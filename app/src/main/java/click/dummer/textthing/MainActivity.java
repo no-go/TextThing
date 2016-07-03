@@ -1,12 +1,12 @@
 package click.dummer.textthing;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
@@ -21,7 +21,7 @@ import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
-public class MainActivity extends Activity {
+public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private boolean isMono;
     private Uri data = null;
