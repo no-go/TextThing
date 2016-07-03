@@ -40,5 +40,6 @@
         android:typeface="monospace"
         android:textColor="@android:color/black"
         android:layout_alignParentBottom="true"
-        android:layout_alignEnd="@+id/editText" />
+        android:layout_alignEnd="@+id/editText"
+        android:layout_alignRight="@+id/editText" />
 </RelativeLayout>
