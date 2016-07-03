@@ -8,8 +8,8 @@ android {
         applicationId "click.dummer.textthing"
         minSdkVersion 16
         targetSdkVersion 22
-// ?       versionCode 17
-// ?       versionName "1.7"
+       versionCode 17
+       versionName "1.7"
     }
     buildTypes {
         release {
