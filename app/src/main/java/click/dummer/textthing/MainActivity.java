@@ -22,6 +22,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 public class MainActivity extends AppCompatActivity {
+
     private SharedPreferences mPreferences;
     private boolean isMono;
     private Uri data = null;
@@ -137,6 +138,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+
         if (data != null) {
             try {
                 File file = new File(data.getPath());
