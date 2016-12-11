@@ -26,7 +26,7 @@ import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String PROJECT_LINK = "https://github.com/no-go/TextThing";
+    private static final String PROJECT_LINK = "http://no-go.github.io/TextThing/";
     private static final String FLATTR_ID = "o6wo7q";
     private String FLATTR_LINK;
 
