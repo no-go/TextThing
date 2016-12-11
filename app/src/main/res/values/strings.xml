@@ -7,4 +7,13 @@
     <string name="errAccess">error on access</string>
     <string name="errWrite">error on write</string>
     <string name="errRead">error on read</string>
+
+    <string name="info">Info ...</string>
+    <string name="flattr_this">Micro-Donate !</string>
+    <string name="projPage">Homepage</string>
+
+    <string name="themes">Themes ...</string>
+    <string name="retro">Retro</string>
+    <string name="Day">Day</string>
+    <string name="Night">Night</string>
 </resources>

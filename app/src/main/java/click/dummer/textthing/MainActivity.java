@@ -2,13 +2,16 @@ package click.dummer.textthing;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.PopupMenu;
 import android.widget.TextView;
@@ -20,15 +23,21 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
+    private static final String PROJECT_LINK = "https://github.com/no-go/TextThing";
+    private static final String FLATTR_ID = "o6wo7q";
+    private String FLATTR_LINK;
 
     private SharedPreferences mPreferences;
     private boolean isMono;
+    private int themeNr;
     private Uri data = null;
     private TextView contentView;
     private Button btn;
     private PopupMenu popup;
+    private ViewGroup mainView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,21 +45,41 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mPreferences = getPreferences(MODE_PRIVATE);
 
+        try {
+            FLATTR_LINK = "https://flattr.com/submit/auto?fid="+FLATTR_ID+"&url="+
+                    java.net.URLEncoder.encode(PROJECT_LINK, "ISO-8859-1");
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+        }
+
         contentView = (TextView) findViewById(R.id.editText);
+        mainView = (ViewGroup) findViewById(R.id.mainView);
         btn = (Button) findViewById(R.id.optnBtn);
-        popup = new PopupMenu(MainActivity.this, btn);
 
         float fontSize = mPreferences.getFloat(App.PREF_Size, App.DEFAULT_Size);
         isMono = mPreferences.getBoolean(App.PREF_Mono, App.DEFAULT_Mono);
+        themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
         contentView.setTextSize(fontSize);
         if (isMono == true) {
             contentView.setTypeface(Typeface.MONOSPACE);
         } else {
             contentView.setTypeface(Typeface.SANS_SERIF);
         }
-
+        switch (themeNr) {
+            case 1:
+                themeDay();
+                break;
+            case 2:
+                themeNight();
+                break;
+            default:
+                themeRetro();
+                break;
+        }
+        popup = new PopupMenu(MainActivity.this, btn);
         popup.dismiss();
         popup.getMenuInflater().inflate(R.menu.fontsel, popup.getMenu());
+
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
                 float fontSize = mPreferences.getFloat(App.PREF_Size, App.DEFAULT_Size);
@@ -72,6 +101,30 @@ public class MainActivity extends AppCompatActivity {
                             contentView.setTypeface(Typeface.SANS_SERIF);
                         }
                         break;
+
+                    case R.id.theme_retro:
+                        item.setChecked(true);
+                        themeRetro();
+                        break;
+
+                    case R.id.theme_day:
+                        item.setChecked(true);
+                        themeDay();
+                        break;
+
+                    case R.id.theme_night:
+                        item.setChecked(true);
+                        themeNight();
+                        break;
+
+                    case R.id.action_flattr:
+                        Intent intentFlattr = new Intent(Intent.ACTION_VIEW, Uri.parse(FLATTR_LINK));
+                        startActivity(intentFlattr);
+                        break;
+                    case R.id.action_project:
+                        Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
+                        startActivity(intentProj);
+                        break;
                     default:
                         return false;
                 }
@@ -79,6 +132,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mPreferences.edit();
                 editor.putFloat(App.PREF_Size, fontSize);
                 editor.putBoolean(App.PREF_Mono, isMono);
+                editor.putInt(App.PREF_Theme, themeNr);
                 editor.apply();
                 return true;
             }
@@ -88,6 +142,12 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 MenuItem mi = popup.getMenu().findItem(R.id.monoStyle);
+                MenuItem mi0 = popup.getMenu().findItem(R.id.theme_retro);
+                MenuItem mi1 = popup.getMenu().findItem(R.id.theme_day);
+                MenuItem mi2 = popup.getMenu().findItem(R.id.theme_night);
+                if (themeNr == 0) mi0.setChecked(true);
+                if (themeNr == 1) mi1.setChecked(true);
+                if (themeNr == 2) mi2.setChecked(true);
                 mi.setChecked(isMono);
                 popup.show();
             }
@@ -133,6 +193,48 @@ public class MainActivity extends AppCompatActivity {
                 ).show();
             }
         }
+    }
+
+    void themeRetro() {
+        themeNr = 0;
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+        );
+        btn.setTextColor(Color.BLACK);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkRetro)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+        );
+    }
+
+    void themeDay() {
+        themeNr = 1;
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.MiddleDay)
+        );
+        btn.setTextColor(Color.BLACK);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkDay)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightDay)
+        );
+    }
+
+    void themeNight() {
+        themeNr = 2;
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.MiddleNight)
+        );
+        btn.setTextColor(Color.GRAY);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkNight)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightNight)
+        );
     }
 
     @Override

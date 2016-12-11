@@ -7,6 +7,11 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 
 ![The App Icon](icon.png)
 
+## Features since Version 1.9
+
+- Themes: Retro, Day, Night
+- Donate/Homepage Link added
+
 ## Screenshots
 The blue colors are fixed and based on the 1980er C64 Homecomputer. TextThing / TextDing works on 4.1.1+
 

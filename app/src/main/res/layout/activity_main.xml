@@ -4,9 +4,10 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context="click.dummer.textthing.MainActivity"
-    android:background="#a7bcfa"
+    android:id="@+id/mainView"
+    android:background="@color/LightRetro"
     android:paddingLeft="10dp"
-    android:paddingTop="10dp"
+    android:paddingTop="5dp"
     android:paddingRight="10dp"
     android:paddingBottom="0dp">
 
@@ -23,8 +24,8 @@
         android:gravity="top"
         android:textAlignment="gravity"
         android:fontFamily="monospace"
-        android:background="#313079"
-        android:textColor="#a7bcfa"
+        android:background="@color/DarkRetro"
+        android:textColor="@color/LightRetro"
         android:textSize="@dimen/abc_text_size_title_material_toolbar"
         android:layout_alignParentTop="true"
         android:layout_above="@+id/optnBtn" />

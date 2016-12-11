@@ -1,6 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#3F51B5</color>
-    <color name="colorPrimaryDark">#303F9F</color>
+    <color name="colorPrimary">#a7bcfa</color>
+    <color name="colorPrimaryDark">#313079</color>
     <color name="colorAccent">#FF4081</color>
+
+    <color name="DarkRetro">#313079</color>
+    <color name="LightRetro">#a7bcfa</color>
+
+    <color name="DarkDay">#f0f0ee</color>
+    <color name="MiddleDay">#b0b0b0</color>
+    <color name="LightDay">#111155</color>
+
+    <color name="DarkNight">#000011</color>
+    <color name="MiddleNight">#440000</color>
+    <color name="LightNight">#cc0000</color>
 </resources>

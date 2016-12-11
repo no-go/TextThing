@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
         android:id="@+id/smallerSize"
@@ -11,6 +12,38 @@
     <group android:checkableBehavior="all">
         <item
             android:id="@+id/monoStyle"
-            android:title="@string/monospace"/>
+            android:title="@string/monospace" />
     </group>
+
+    <item
+        android:id="@+id/Themes"
+        android:title="@string/themes">
+        <menu>
+            <group android:checkableBehavior="single">
+                <item
+                    android:id="@+id/theme_retro"
+                    android:title="@string/retro" />
+                <item
+                    android:id="@+id/theme_day"
+                    android:title="@string/Day" />
+                <item
+                    android:id="@+id/theme_night"
+                    android:title="@string/Night" />
+            </group>
+        </menu>
+    </item>
+
+    <item
+        android:id="@+id/Info"
+        android:title="@string/info">
+        <menu>
+            <item
+                android:id="@+id/action_flattr"
+                android:title="@string/flattr_this" />
+            <item
+                android:id="@+id/action_project"
+                android:title="@string/projPage" />
+        </menu>
+    </item>
+
 </menu>
