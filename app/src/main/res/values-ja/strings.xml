@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">TextThing</string>
+    <string name="fontOptions">フォント</string>
+    <string name="bigger">大きく +</string>
+    <string name="smaller">小さく -</string>
+    <string name="monospace">monospace</string>
+    <string name="errAccess">アクセス時にエラー</string>
+    <string name="errWrite">書き込み時にエラー</string>
+    <string name="errRead">読み取り時にエラー</string>
+
+    <string name="info">情報 ...</string>
+    <string name="flattr_this">マイクロ寄付 !</string>
+    <string name="projPage">ホームページ</string>
+
+    <string name="themes">テーマ ...</string>
+    <string name="retro">レトロ</string>
+    <string name="Day">日中</string>
+    <string name="Night">夜間</string>
+</resources>
