@@ -36,3 +36,22 @@ The blue colors are fixed and based on the 1980er C64 Homecomputer. TextThing / 
 ## License
 
 I publish everything under the free BSD-2 License.
+
+## Privacy Policy
+
+### Personal information.
+
+Personal information is data that can be used to uniquely identify or contact a single person. I DO NOT collect, transmit, store or use any personal information while you use this app.
+
+### Non-Personal information.
+
+I DO NOT collect non-personal information like user's behavior:
+
+ -  to solve App problems
+ -  to show personalized ads
+
+The google play store collect non-personal information such as the data of install (country and equipment).
+
+### Privacy Questions.
+
+If you have any questions or concerns about my Privacy Policy or data processing, please contact me.
