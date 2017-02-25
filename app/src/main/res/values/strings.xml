@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextThing</string>
+    <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">Font</string>
     <string name="bigger">increase +</string>
     <string name="smaller">decrease -</string>
