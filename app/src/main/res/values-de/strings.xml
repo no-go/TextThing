@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextDing</string>
+    <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">Schriftart</string>
     <string name="bigger">vergrößern +</string>
     <string name="smaller">verkleiner -</string>

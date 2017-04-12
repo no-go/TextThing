@@ -2,46 +2,130 @@
 <items version="2" >
 
     <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/incremental-runtime-classes/debug/instant-run.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="d959473f1522f11883e2e682a85226209abc81f9">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run_20f229e422413dd4cb8dc2d3806074a330a9f974/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-animated-vector-drawable-24.0.0_bee1d94cddeaa669db1e968b80ff56280c68b541/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/unknwon/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.3"
         sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
         <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/support-annotations-24.0.0_5b7a14abcdd638769797959120357016b069acb0.jar" />
     </item>
     <item
-        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/unknwon/Android/Sdk/extras/android/m2repository/com/android/support/support-annotations/24.0.0/support-annotations-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.3"
-        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
-        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/internal_impl-24.0.0_473af3931c02e7e68e91fb5a28961c7ebe8d8ace.jar" />
+        sha1="2943c74db6d4346ab8c6531adac91fa05c137c40">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/support-annotations-24.0.0_5b7a14abcdd638769797959120357016b069acb0/classes.dex" />
     </item>
     <item
-        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        is-multidex="false"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.3"
-        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
-        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-support-vector-drawable-24.0.0_2985bc3d01148cfecbe058e04d4e11a70ccc85bf.jar" />
+        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-animated-vector-drawable-24.0.0_bee1d94cddeaa669db1e968b80ff56280c68b541.jar" />
     </item>
     <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-v4-24.0.0_60f0559dd5c325282ab22177e557246de711099f/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/incremental-classes/debug/instant-run-bootstrap.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="b4bbc29781b97fd2e55c3102879e3ccc61ef76db">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/instant-run-bootstrap_9b11e32335d5945bb42ebbf4cdb554fd43c081ed/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/classes.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.3"
         sha1="2f7e6e2dad1bccaf68a8820820adc6c0d5b96d37">
         <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-support-v4-24.0.0_60f0559dd5c325282ab22177e557246de711099f.jar" />
     </item>
     <item
+        is-multidex="false"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-support-vector-drawable-24.0.0_2985bc3d01148cfecbe058e04d4e11a70ccc85bf.jar" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-appcompat-v7-24.0.0_9c5fd0c7b54ed4e4abd5c171d5bd5d438fa10d28/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
         jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/appcompat-v7/24.0.0/jars/classes.jar"
         jumboMode="false"
+        optimize="true"
         revision="23.0.3"
         sha1="0874286cc2fd88d54fdf130e9d5372730da6de97">
         <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-appcompat-v7-24.0.0_9c5fd0c7b54ed4e4abd5c171d5bd5d438fa10d28.jar" />
     </item>
     <item
-        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/animated-vector-drawable/24.0.0/jars/classes.jar"
-        jumboMode="false"
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="true"
+        optimize="true"
         revision="23.0.3"
-        sha1="e70f608219ed6b974644c333249ab2bb7b71de98">
-        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/com.android.support-animated-vector-drawable-24.0.0_bee1d94cddeaa669db1e968b80ff56280c68b541.jar" />
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/internal_impl-24.0.0_473af3931c02e7e68e91fb5a28961c7ebe8d8ace/classes.dex" />
+    </item>
+    <item
+        is-multidex="true"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-vector-drawable/24.0.0/jars/classes.jar"
+        jumboMode="true"
+        optimize="true"
+        revision="23.0.3"
+        sha1="3bd97cfefd783e9de1dd1c30574a6adb44b4409b">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/transforms/dex/debug/folders/1000/10/com.android.support-support-vector-drawable-24.0.0_2985bc3d01148cfecbe058e04d4e11a70ccc85bf/classes.dex" />
+    </item>
+    <item
+        is-multidex="false"
+        jar="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/exploded-aar/com.android.support/support-v4/24.0.0/jars/libs/internal_impl-24.0.0.jar"
+        jumboMode="false"
+        optimize="true"
+        revision="23.0.3"
+        sha1="fcaf463e10e69c1923ccf1edeba3b4196d239e00">
+        <dex dex="/home/unknwon/Android/Projects/TextThing/app/build/intermediates/pre-dexed/release/internal_impl-24.0.0_473af3931c02e7e68e91fb5a28961c7ebe8d8ace.jar" />
     </item>
 
 </items>
