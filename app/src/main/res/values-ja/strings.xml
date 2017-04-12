@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">TextThing</string>
+    <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">フォント</string>
     <string name="bigger">大きく +</string>
     <string name="smaller">小さく -</string>

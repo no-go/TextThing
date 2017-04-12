@@ -6,6 +6,11 @@ It is a simple text file editor for Android. You can use it via a file manager a
 
 Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2Fgithub.com%2Fno-go%2FTextThing" target="_blank">![Flattr This](flattr-badge-large.png)</a>
 
+<a href="https://f-droid.org/repository/browse/?fdid=click.dummer.textthing" target="_blank">
+<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
+<a href="https://play.google.com/store/apps/details?id=click.dummer.textthing" target="_blank">
+<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
+
 ## App Icon
 
 ![The App Icon](icon.png)
@@ -26,12 +31,18 @@ The blue colors are fixed and based on the 1980er C64 Homecomputer. It works on 
 
 ![The blue colors are fixed and based on the 1980er C64 Homecomputer](screenshot-6.0.1.jpg) ![It runns under 4.1.1 Jelly Bean too.](screenshot-4.1.1.jpg)
 
+### Japanese translation
+
+Thanks to [naofum](https://github.com/naofum) for a japanese translation!
+
+![japanese translation](stuff/japanese_translation.jpg)
+
 ## Links
 
 - [About Me](http://quantenwatch.de), [Jochen Peters Krefeld](http://dummer.click)
 - [App Home](http://no-go.github.io/TextThing/)
 - [Source](https://github.com/no-go/TextThing)
-- [APK File](https://raw.githubusercontent.com/no-go/TextThing/master/app/app-release.apk) or get the App from [f-Droid](https://f-droid.org/wiki/page/click.dummer.textthing)
+- [APK File](https://raw.githubusercontent.com/no-go/TextThing/master/app/app-release.apk)
 
 ## License
 
