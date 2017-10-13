@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">Fonte</string>
-    <string name="bigger">augmenter +</string>
-    <string name="smaller">diminuer -</string>
+    <string name="bigger">agrandir +</string>
+    <string name="smaller">réduire -</string>
     <string name="monospace">chasse fixe</string>
     <string name="errAccess">erreur d\'accès</string>
     <string name="errWrite">erreur d\'écriture</string>
