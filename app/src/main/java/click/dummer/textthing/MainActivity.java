@@ -5,6 +5,7 @@ import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
@@ -27,6 +28,7 @@ import java.io.UnsupportedEncodingException;
 
 public class MainActivity extends AppCompatActivity {
     private static final String PROJECT_LINK = "http://no-go.github.io/TextThing/";
+    private static final String PROJECT2_LINK = "http://style64.org/c64-truetype";
     private static final String FLATTR_ID = "o6wo7q";
     private String FLATTR_LINK;
 
@@ -39,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private Button btn;
     private PopupMenu popup;
     private ViewGroup mainView;
+
+    private Typeface c64Font;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,6 +66,9 @@ public class MainActivity extends AppCompatActivity {
         autoSave = mPreferences.getBoolean(App.PREF_AutoSave, App.DEFAULT_AutoSave);
         themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
         contentView.setTextSize(fontSize);
+
+        c64Font = Typeface.createFromAsset(getAssets(), "fonts/C64_Pro_Mono-STYLE.ttf");
+
         if (isMono == true) {
             contentView.setTypeface(Typeface.MONOSPACE);
         } else {
@@ -73,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 2:
                 themeNight();
+                break;
+            case 3:
+                themeC64();
                 break;
             default:
                 themeRetro();
@@ -87,10 +97,10 @@ public class MainActivity extends AppCompatActivity {
                 float fontSize = mPreferences.getFloat(App.PREF_Size, App.DEFAULT_Size);
                 switch (item.getItemId()) {
                     case R.id.smallerSize:
-                        fontSize = fontSize * 0.8f;
+                        fontSize = fontSize * 0.9f;
                         break;
                     case R.id.biggerSize:
-                        fontSize = fontSize * 1.2f;
+                        fontSize = fontSize * 1.1f;
                         break;
                     case R.id.saveNow:
                         saveNow();
@@ -122,6 +132,11 @@ public class MainActivity extends AppCompatActivity {
                         themeRetro();
                         break;
 
+                    case R.id.theme_c64:
+                        item.setChecked(true);
+                        themeC64();
+                        break;
+
                     case R.id.theme_day:
                         item.setChecked(true);
                         themeDay();
@@ -139,6 +154,10 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.action_project:
                         Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
                         startActivity(intentProj);
+                        break;
+                    case R.id.action_project2:
+                        Intent intentProj2 = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT2_LINK));
+                        startActivity(intentProj2);
                         break;
                     default:
                         return false;
@@ -162,9 +181,11 @@ public class MainActivity extends AppCompatActivity {
                 MenuItem mi1 = popup.getMenu().findItem(R.id.theme_day);
                 MenuItem mi2 = popup.getMenu().findItem(R.id.theme_night);
                 MenuItem mi3 = popup.getMenu().findItem(R.id.autoSave);
+                MenuItem mi4 = popup.getMenu().findItem(R.id.theme_c64);
                 if (themeNr == 0) mi0.setChecked(true);
                 if (themeNr == 1) mi1.setChecked(true);
                 if (themeNr == 2) mi2.setChecked(true);
+                if (themeNr == 3) mi4.setChecked(true);
                 mi.setChecked(isMono);
                 mi3.setChecked(autoSave);
                 popup.show();
@@ -226,6 +247,18 @@ public class MainActivity extends AppCompatActivity {
         contentView.setTextColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
         );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+            );
+        }
+        if (isMono) {
+            contentView.setTypeface(Typeface.MONOSPACE);
+            btn.setTypeface(Typeface.MONOSPACE);
+        } else {
+            contentView.setTypeface(Typeface.SANS_SERIF);
+            btn.setTypeface(Typeface.SANS_SERIF);
+        }
     }
 
     void themeDay() {
@@ -240,6 +273,18 @@ public class MainActivity extends AppCompatActivity {
         contentView.setTextColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.LightDay)
         );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.LightDay)
+            );
+        }
+        if (isMono) {
+            contentView.setTypeface(Typeface.MONOSPACE);
+            btn.setTypeface(Typeface.MONOSPACE);
+        } else {
+            contentView.setTypeface(Typeface.SANS_SERIF);
+            btn.setTypeface(Typeface.SANS_SERIF);
+        }
     }
 
     void themeNight() {
@@ -254,7 +299,43 @@ public class MainActivity extends AppCompatActivity {
         contentView.setTextColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.LightNight)
         );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.LightNight)
+            );
+        }
+        if (isMono) {
+            contentView.setTypeface(Typeface.MONOSPACE);
+            btn.setTypeface(Typeface.MONOSPACE);
+        } else {
+            contentView.setTypeface(Typeface.SANS_SERIF);
+            btn.setTypeface(Typeface.SANS_SERIF);
+        }
     }
+
+    void themeC64() {
+        themeNr = 3;
+        isMono = true;
+        contentView.setTypeface(Typeface.MONOSPACE);
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+        );
+        btn.setTextColor(Color.BLACK);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkRetro)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+        );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
+            );
+        }
+        contentView.setTypeface(c64Font);
+        btn.setTypeface(c64Font);
+    }
+
 
     @Override
     protected void onPause() {

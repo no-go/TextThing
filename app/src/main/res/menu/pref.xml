@@ -39,6 +39,9 @@
                 <item
                     android:id="@+id/theme_night"
                     android:title="@string/Night" />
+                <item
+                    android:id="@+id/theme_c64"
+                    android:title="c64 native" />
             </group>
         </menu>
     </item>
@@ -53,6 +56,8 @@
             <item
                 android:id="@+id/action_project"
                 android:title="@string/projPage" />
+            <item android:id="@+id/action_project2"
+                android:title="c64 ttfonts" />
         </menu>
     </item>
 
