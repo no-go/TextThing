@@ -3,6 +3,10 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
+        android:id="@+id/saveNow"
+        android:title="@string/saveNow"/>
+
+    <item
         android:id="@+id/smallerSize"
         android:title="@string/smaller"/>
     <item
@@ -13,6 +17,12 @@
         <item
             android:id="@+id/monoStyle"
             android:title="@string/monospace" />
+    </group>
+
+    <group android:checkableBehavior="all">
+        <item
+            android:id="@+id/autoSave"
+            android:title="@string/autoSave" />
     </group>
 
     <item

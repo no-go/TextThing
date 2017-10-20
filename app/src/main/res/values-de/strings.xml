@@ -1,9 +1,13 @@
 <resources>
     <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">Schriftart</string>
+    <string name="preferences">Einstellungen</string>
     <string name="bigger">vergrößern +</string>
     <string name="smaller">verkleiner -</string>
     <string name="monospace">Monospace</string>
+    <string name="saveNow">SAVE NOW!</string>
+    <string name="autoSave">auto save</string>
+    <string name="ok">ok</string>
     <string name="errAccess">Fehler bei Dateizugriff</string>
     <string name="errWrite">Fehler beim Schreiben</string>
     <string name="errRead">Fehler beim Lesen</string>

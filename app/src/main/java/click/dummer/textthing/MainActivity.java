@@ -32,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
 
     private SharedPreferences mPreferences;
     private boolean isMono;
+    private boolean autoSave;
     private int themeNr;
     private Uri data = null;
     private TextView contentView;
@@ -58,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         float fontSize = mPreferences.getFloat(App.PREF_Size, App.DEFAULT_Size);
         isMono = mPreferences.getBoolean(App.PREF_Mono, App.DEFAULT_Mono);
+        autoSave = mPreferences.getBoolean(App.PREF_AutoSave, App.DEFAULT_AutoSave);
         themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
         contentView.setTextSize(fontSize);
         if (isMono == true) {
@@ -78,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
         }
         popup = new PopupMenu(MainActivity.this, btn);
         popup.dismiss();
-        popup.getMenuInflater().inflate(R.menu.fontsel, popup.getMenu());
+        popup.getMenuInflater().inflate(R.menu.pref, popup.getMenu());
 
         popup.setOnMenuItemClickListener(new PopupMenu.OnMenuItemClickListener() {
             public boolean onMenuItemClick(MenuItem item) {
@@ -90,6 +92,9 @@ public class MainActivity extends AppCompatActivity {
                     case R.id.biggerSize:
                         fontSize = fontSize * 1.2f;
                         break;
+                    case R.id.saveNow:
+                        saveNow();
+                        break;
                     case R.id.monoStyle:
                         if (item.isChecked() == false) {
                             item.setChecked(true);
@@ -99,6 +104,16 @@ public class MainActivity extends AppCompatActivity {
                             item.setChecked(false);
                             isMono = false;
                             contentView.setTypeface(Typeface.SANS_SERIF);
+                        }
+                        break;
+
+                    case R.id.autoSave:
+                        if (item.isChecked() == false) {
+                            item.setChecked(true);
+                            autoSave = true;
+                        } else {
+                            item.setChecked(false);
+                            autoSave = false;
                         }
                         break;
 
@@ -132,6 +147,7 @@ public class MainActivity extends AppCompatActivity {
                 SharedPreferences.Editor editor = mPreferences.edit();
                 editor.putFloat(App.PREF_Size, fontSize);
                 editor.putBoolean(App.PREF_Mono, isMono);
+                editor.putBoolean(App.PREF_AutoSave, autoSave);
                 editor.putInt(App.PREF_Theme, themeNr);
                 editor.apply();
                 return true;
@@ -145,10 +161,12 @@ public class MainActivity extends AppCompatActivity {
                 MenuItem mi0 = popup.getMenu().findItem(R.id.theme_retro);
                 MenuItem mi1 = popup.getMenu().findItem(R.id.theme_day);
                 MenuItem mi2 = popup.getMenu().findItem(R.id.theme_night);
+                MenuItem mi3 = popup.getMenu().findItem(R.id.autoSave);
                 if (themeNr == 0) mi0.setChecked(true);
                 if (themeNr == 1) mi1.setChecked(true);
                 if (themeNr == 2) mi2.setChecked(true);
                 mi.setChecked(isMono);
+                mi3.setChecked(autoSave);
                 popup.show();
             }
         });
@@ -185,6 +203,7 @@ public class MainActivity extends AppCompatActivity {
                 file = new File(path);
                 if (!file.exists()) file.createNewFile();
                 data = Uri.fromFile(file);
+                loadNow();
             } catch (Exception e) {
                 Toast.makeText(
                         getApplicationContext(),
@@ -241,7 +260,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
 
-        if (data != null) {
+        if (data != null && autoSave) {
             try {
                 File file = new File(data.getPath());
                 FileOutputStream fos = new FileOutputStream(file);
@@ -261,7 +280,7 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (data != null) {
+        if (data != null && autoSave) {
             try {
                 File file = new File(data.getPath());
 
@@ -281,6 +300,67 @@ public class MainActivity extends AppCompatActivity {
                         Toast.LENGTH_LONG
                 ).show();
             }
+        }
+    }
+
+    @Override
+    protected void onSaveInstanceState(Bundle outState) {
+        super.onSaveInstanceState(outState);
+        final TextView textBox = (TextView) findViewById(R.id.editText);
+        CharSequence userText = textBox.getText();
+        outState.putCharSequence("savedText", userText);
+    }
+
+    @Override
+    protected void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        final TextView textBox = (TextView) findViewById(R.id.editText);
+        CharSequence userText = savedInstanceState.getCharSequence("savedText");
+        textBox.setText(userText);
+    }
+
+    void saveNow() {
+        if (data != null) {
+            try {
+                File file = new File(data.getPath());
+                FileOutputStream fos = new FileOutputStream(file);
+                fos.write(contentView.getText().toString().getBytes());
+                fos.flush();
+                fos.close();
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.ok) + "\n" + data.getPath(),
+                        Toast.LENGTH_SHORT
+                ).show();
+            } catch (Exception e) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.errWrite) + "\n" + data.getPath(),
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+        }
+    }
+
+    void loadNow() {
+        try {
+            File file = new File(data.getPath());
+
+            BufferedReader bufferedReader = new BufferedReader(
+                    new InputStreamReader(new FileInputStream(file))
+            );
+            String text = "";
+            while (bufferedReader.ready()) {
+                text += bufferedReader.readLine() + "\n";
+            }
+            contentView.setText(text);
+
+        } catch (Exception e) {
+            Toast.makeText(
+                    getApplicationContext(),
+                    getString(R.string.errRead) + "\n" + data.getPath(),
+                    Toast.LENGTH_LONG
+            ).show();
         }
     }
 }

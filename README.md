@@ -22,14 +22,22 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 - Text file editor for your favorite file manager
 - App creates and opens Documents/click.dummer.textthing/notes.txt as default
 - use the App to write notes
-- stores changes on closing or pausing the App
+- stores changes on closing or pausing the App (optionaly)
 - set your favorite font size and switch between normal or monospace style
+- languages: english, japanese, german, french
+- a **save now** button in preferences
 
 ## Screenshots
 
 The blue colors are fixed and based on the 1980er C64 Homecomputer. It works on 4.1.1+
 
 ![The blue colors are fixed and based on the 1980er C64 Homecomputer](screenshot-6.0.1.jpg) ![It runns under 4.1.1 Jelly Bean too.](screenshot-4.1.1.jpg)
+
+
+
+### French translation
+
+Thanks to [xin](https://github.com/xinxinxinxinxin) for a french translation!
 
 ### Japanese translation
 
@@ -66,3 +74,7 @@ The google play store collect non-personal information such as the data of insta
 ### Privacy Questions.
 
 If you have any questions or concerns about my Privacy Policy or data processing, please contact me.
+
+## Special thanks
+
+- Michael Grieswald on google play for a good/bad review. I made the "auto save" as an option after reading it.

@@ -2,14 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 24
-    buildToolsVersion "23.0.3"
+    buildToolsVersion '25.0.0'
 
     defaultConfig {
         applicationId "click.dummer.textthing"
         minSdkVersion 16
         targetSdkVersion 22
-       versionCode 192
-       versionName "1.92"
+       versionCode 193
+       versionName "1.93"
     }
     buildTypes {
         release {
