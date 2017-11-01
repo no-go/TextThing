@@ -400,6 +400,10 @@ public class MainActivity extends AppCompatActivity {
         textBox.setText(userText);
     }
 
+    public void clickSaveButton(View v) {
+        saveNow();
+    }
+
     void saveNow() {
         if (data != null) {
             try {

@@ -19,7 +19,7 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 
 - Themes: Retro, Day, Night
 - Donate/Homepage Link added
-- Text file editor for your favorite file manager
+- Text file editor for your favorite file manager (opens every plain Text files)
 - App creates and opens Documents/click.dummer.textthing/notes.txt as default
 - use the App to write notes
 - stores changes on closing or pausing the App (optionaly)
