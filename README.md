@@ -26,6 +26,7 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 - set your favorite font size and switch between normal or monospace style
 - languages: english, japanese, german, french
 - a **save now** button in preferences
+- very small widget added
 
 ## Screenshots
 

@@ -5,7 +5,7 @@
     <string name="bigger">agrandir +</string>
     <string name="smaller">réduire -</string>
     <string name="monospace">chasse fixe</string>
-    <string name="saveNow">ENREGISTRER MAINTENANT !</string>
+    <string name="saveNow">ENREGISTRER</string>
     <string name="autoSave">enregistrement auto</string>
     <string name="ok">ok</string>
     <string name="errAccess">erreur d\'accès</string>

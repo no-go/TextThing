@@ -2,6 +2,7 @@ package click.dummer.textthing;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -10,6 +11,7 @@ import android.os.Bundle;
 import android.os.Environment;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
@@ -35,6 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private SharedPreferences mPreferences;
     private boolean isMono;
     private boolean autoSave;
+    private boolean fromExtern;
     private int themeNr;
     private Uri data = null;
     private TextView contentView;
@@ -49,6 +52,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         mPreferences = getPreferences(MODE_PRIVATE);
+        fromExtern = false;
 
         try {
             FLATTR_LINK = "https://flattr.com/submit/auto?fid="+FLATTR_ID+"&url="+
@@ -195,6 +199,9 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = getIntent();
         data = intent.getData();
         if (data != null) {
+            fromExtern = true;
+
+            Log.d(App.PACKAGE_NAME, "intent.getData() is not Null - Use App via filemanager?");
             try {
                 InputStream input = getContentResolver().openInputStream(data);
                 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
@@ -208,6 +215,10 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else {
+            // opening App as without a filemanager and use the default file
+            fromExtern = false;
+
+            Log.d(App.PACKAGE_NAME, "intent.getData() is Null - use App with default File");
             File file = null;
             if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
                 file = new File(
@@ -220,6 +231,7 @@ public class MainActivity extends AppCompatActivity {
 
             String path = file.getPath() + App.NOTE_FILENAME;
             try {
+                Log.d(App.PACKAGE_NAME, "mkdirs()");
                 file.mkdirs();
                 file = new File(path);
                 if (!file.exists()) file.createNewFile();
@@ -340,20 +352,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onPause() {
         super.onPause();
+        Log.d(App.PACKAGE_NAME, "onPause()");
 
-        if (data != null && autoSave) {
-            try {
-                File file = new File(data.getPath());
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(contentView.getText().toString().getBytes());
-                fos.flush();
-                fos.close();
-            } catch (Exception e) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(R.string.errWrite) + "\n" + data.getPath(),
-                        Toast.LENGTH_LONG
-                ).show();
+        if (data != null && autoSave && !fromExtern) {
+            String path = data.getPath();
+            if (path != null) {
+                try {
+                    path = PathUtil.getPath(getApplicationContext(), data);
+                    File file = new File(path);
+                    FileOutputStream fos = new FileOutputStream(file);
+                    fos.write(contentView.getText().toString().getBytes());
+                    fos.flush();
+                    fos.close();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.errWrite) + "\n" + path,
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
         }
     }
@@ -361,25 +379,32 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (data != null && autoSave) {
-            try {
-                File file = new File(data.getPath());
+        Log.d(App.PACKAGE_NAME, "onResume()");
 
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(new FileInputStream(file))
-                );
-                String text = "";
-                while (bufferedReader.ready()) {
-                    text += bufferedReader.readLine() + "\n";
+        if (data != null && autoSave && !fromExtern) {
+            String path = data.getPath();
+            if (path != null) {
+                try {
+                    path = PathUtil.getPath(getApplicationContext(), data);
+                    File file = new File(path);
+
+                    BufferedReader bufferedReader = new BufferedReader(
+                            new InputStreamReader(new FileInputStream(file))
+                    );
+                    String text = "";
+                    while (bufferedReader.ready()) {
+                        text += bufferedReader.readLine() + "\n";
+                    }
+                    contentView.setText(text);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.errRead) + "\n" + path,
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
-                contentView.setText(text);
-
-            } catch (Exception e) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(R.string.errRead) + "\n" + data.getPath(),
-                        Toast.LENGTH_LONG
-                ).show();
             }
         }
     }
@@ -406,46 +431,58 @@ public class MainActivity extends AppCompatActivity {
 
     void saveNow() {
         if (data != null) {
-            try {
-                File file = new File(data.getPath());
-                FileOutputStream fos = new FileOutputStream(file);
-                fos.write(contentView.getText().toString().getBytes());
-                fos.flush();
-                fos.close();
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(R.string.ok) + "\n" + data.getPath(),
-                        Toast.LENGTH_SHORT
-                ).show();
-            } catch (Exception e) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(R.string.errWrite) + "\n" + data.getPath(),
-                        Toast.LENGTH_LONG
-                ).show();
+            String path = data.getPath();
+            if (path != null) {
+                try {
+                    Log.d(App.PACKAGE_NAME, "saveNow()");
+                    path = PathUtil.getPath(getApplicationContext(), data);
+                    File file = new File(path);
+                    FileOutputStream fos = new FileOutputStream(file);
+                    fos.write(contentView.getText().toString().getBytes());
+                    fos.flush();
+                    fos.close();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.ok) + "\n" + data.getPath(),
+                            Toast.LENGTH_SHORT
+                    ).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.errWrite) + "\n" + path,
+                            Toast.LENGTH_LONG
+                    ).show();
+                }
             }
         }
     }
 
     void loadNow() {
-        try {
-            File file = new File(data.getPath());
+        String path = data.getPath();
+        if (path != null) {
+            try {
+                Log.d(App.PACKAGE_NAME, "loadNow()");
+                path = PathUtil.getPath(getApplicationContext(), data);
+                File file = new File(path);
 
-            BufferedReader bufferedReader = new BufferedReader(
-                    new InputStreamReader(new FileInputStream(file))
-            );
-            String text = "";
-            while (bufferedReader.ready()) {
-                text += bufferedReader.readLine() + "\n";
+                BufferedReader bufferedReader = new BufferedReader(
+                        new InputStreamReader(new FileInputStream(file))
+                );
+                String text = "";
+                while (bufferedReader.ready()) {
+                    text += bufferedReader.readLine() + "\n";
+                }
+                contentView.setText(text);
+
+            } catch (Exception e) {
+                e.printStackTrace();
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.errRead) + "\n" + path,
+                        Toast.LENGTH_LONG
+                ).show();
             }
-            contentView.setText(text);
-
-        } catch (Exception e) {
-            Toast.makeText(
-                    getApplicationContext(),
-                    getString(R.string.errRead) + "\n" + data.getPath(),
-                    Toast.LENGTH_LONG
-            ).show();
         }
     }
 }

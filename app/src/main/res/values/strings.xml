@@ -5,7 +5,7 @@
     <string name="bigger">increase +</string>
     <string name="smaller">decrease -</string>
     <string name="monospace">monospace</string>
-    <string name="saveNow">SAVE NOW!</string>
+    <string name="saveNow">SAVE</string>
     <string name="autoSave">auto save</string>
     <string name="ok">ok</string>
     <string name="errAccess">error on access</string>
