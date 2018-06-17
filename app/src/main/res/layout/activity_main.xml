@@ -40,7 +40,7 @@
         android:background="@android:color/transparent"
         android:padding="1dp"
         android:typeface="monospace"
-        android:textColor="@android:color/black"
+        android:textColor="@android:color/white"
         android:layout_alignParentBottom="true"
         android:layout_alignEnd="@+id/editText"
         android:layout_alignRight="@+id/editText" />
@@ -53,7 +53,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_below="@+id/editText"
-        android:onClick="clickSaveButton"
         android:background="@android:color/transparent"
-        app:srcCompat="@android:drawable/ic_menu_save" />
+        android:scaleType="fitStart"
+        android:onClick="clickSaveButton"
+        app:srcCompat="@drawable/ic_save" />
 </RelativeLayout>

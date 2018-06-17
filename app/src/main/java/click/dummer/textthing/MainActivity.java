@@ -2,13 +2,13 @@ package click.dummer.textthing;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.Cursor;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
+import android.preference.PreferenceManager;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -51,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mPreferences = getPreferences(MODE_PRIVATE);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         fromExtern = false;
 
         try {
@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
         themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
         contentView.setTextSize(fontSize);
 
-        c64Font = Typeface.createFromAsset(getAssets(), "fonts/C64_Pro_Mono-STYLE.ttf");
+        c64Font = Typeface.createFromAsset(getAssets(), "fonts/c64pro_mono.ttf");
 
         if (isMono == true) {
             contentView.setTypeface(Typeface.MONOSPACE);
@@ -252,7 +252,7 @@ public class MainActivity extends AppCompatActivity {
         mainView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
         );
-        btn.setTextColor(Color.BLACK);
+        btn.setTextColor(Color.WHITE);
         contentView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.DarkRetro)
         );
@@ -278,7 +278,7 @@ public class MainActivity extends AppCompatActivity {
         mainView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.MiddleDay)
         );
-        btn.setTextColor(Color.BLACK);
+        btn.setTextColor(Color.WHITE);
         contentView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.DarkDay)
         );
@@ -332,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
         mainView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.LightRetro)
         );
-        btn.setTextColor(Color.BLACK);
+        btn.setTextColor(Color.WHITE);
         contentView.setBackgroundColor(
                 ContextCompat.getColor(getApplicationContext(), R.color.DarkRetro)
         );

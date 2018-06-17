@@ -28,6 +28,11 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 - a **save now** button in preferences
 - very small widget added
 
+## todos
+
+- sometimes widget is not resizable (only on first placement)
+- Add classic c64 font to the widget (have codeing troubble with getting widget size to fit the image with fonts)
+
 ## Screenshots
 
 The blue colors are fixed and based on the 1980er C64 Homecomputer. It works on 4.1.1+
@@ -51,7 +56,7 @@ Thanks to [naofum](https://github.com/naofum) for a japanese translation!
 - [About Me](http://quantenwatch.de), [Jochen Peters Krefeld](http://dummer.click)
 - [App Home](http://no-go.github.io/TextThing/)
 - [Source](https://github.com/no-go/TextThing)
-- [APK File](https://raw.githubusercontent.com/no-go/TextThing/master/app/app-release.apk)
+- [APK File](https://raw.githubusercontent.com/no-go/TextThing/master/app/release/app-release.apk)
 
 ## License
 

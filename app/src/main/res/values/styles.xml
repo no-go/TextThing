@@ -7,4 +7,9 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <declare-styleable name="font">
+        <attr name="fonttype">
+            <enum name="c64pro_mono" value="0" />
+        </attr>
+    </declare-styleable>
 </resources>

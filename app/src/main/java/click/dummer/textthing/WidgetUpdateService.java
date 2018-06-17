@@ -4,9 +4,16 @@ import android.app.Service;
 import android.appwidget.AppWidgetManager;
 import android.content.ComponentName;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.graphics.Bitmap;
+import android.graphics.Canvas;
+import android.graphics.Paint;
+import android.graphics.Typeface;
 import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
+import android.preference.PreferenceManager;
+import android.support.v4.content.ContextCompat;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -15,11 +22,12 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 public class WidgetUpdateService extends Service {
     private Uri data = null;
+    private SharedPreferences mPreferences;
+    private int themeNr;
+    private boolean isMono;
 
     @Override
     public void onCreate() {
@@ -28,8 +36,40 @@ public class WidgetUpdateService extends Service {
 
     @Override
     public int onStartCommand(Intent intent, int flags, int startId) {
-        Date dNow = new Date();
-        RemoteViews views = new RemoteViews(getPackageName(), R.layout.main_widget);
+        mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+        isMono = mPreferences.getBoolean(App.PREF_Mono, App.DEFAULT_Mono);
+        themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
+
+        RemoteViews views = null;
+        switch (themeNr) {
+            case 1:
+                if(isMono) {
+                    views = new RemoteViews(getPackageName(), R.layout.day_widget_m);
+                } else {
+                    views = new RemoteViews(getPackageName(), R.layout.day_widget);
+                }
+                break;
+            case 2:
+                if(isMono) {
+                    views = new RemoteViews(getPackageName(), R.layout.night_widget_m);
+                } else {
+                    views = new RemoteViews(getPackageName(), R.layout.night_widget);
+                }
+                break;
+            case 3:
+                //views = new RemoteViews(getPackageName(), R.layout.c64_widget);
+                views = new RemoteViews(getPackageName(), R.layout.c64_widget_test);
+                break;
+            default:
+                if(isMono) {
+                    views = new RemoteViews(getPackageName(), R.layout.retro_widget_m);
+                } else {
+                    views = new RemoteViews(getPackageName(), R.layout.retro_widget);
+                }
+                break;
+        }
+
+
 
         File file = null;
         if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
@@ -56,7 +96,26 @@ public class WidgetUpdateService extends Service {
             while (bufferedReader.ready()) {
                 text += bufferedReader.readLine() + "\n";
             }
-            views.setTextViewText(R.id.wContent, text);
+/*            if (themeNr == 3) {
+                //AppWidgetManager.getInstance(this).getAppWidgetOptions(0).getBundle(AppWidgetManager.O)
+                int width = intent.getIntExtra("width", 73);
+                int height = intent.getIntExtra("height", 73);
+                Bitmap myBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
+                Canvas myCanvas = new Canvas(myBitmap);
+                Paint paint = new Paint();
+                Typeface c64 = Typeface.createFromAsset(this.getAssets(), "fonts/c64pro_mono.ttf");
+                paint.setAntiAlias(true);
+                paint.setSubpixelText(true);
+                paint.setTypeface(c64);
+                paint.setStyle(Paint.Style.FILL);
+                paint.setColor(ContextCompat.getColor(this, R.color.LightRetro));
+                paint.setTextSize(9);
+                paint.setTextAlign(Paint.Align.LEFT);
+                myCanvas.drawText(text, 0, 11, paint);
+                views.setImageViewBitmap(R.id.wContent, myBitmap);
+            } else {
+*/                views.setTextViewText(R.id.wContent, text);
+//            }
 
         } catch (Exception e) {
             Toast.makeText(
