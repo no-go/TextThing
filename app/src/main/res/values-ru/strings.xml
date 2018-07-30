@@ -1,0 +1,23 @@
+<resources>
+    <string name="app_name">Retro Text Editor</string>
+    <string name="preferences">Параметры</string>
+    <string name="fontOptions">Шрифт</string>
+    <string name="bigger">увеличение +</string>
+    <string name="smaller">уменьшение -</string>
+    <string name="monospace">моноширинный шрифт</string>
+    <string name="saveNow">СОХРАНИТЬ</string>
+    <string name="autoSave">автосохранение</string>
+    <string name="ok">ok</string>
+    <string name="errAccess">ошибка доступа</string>
+    <string name="errWrite">ошибка записи</string>
+    <string name="errRead">ошибка чтения</string>
+
+    <string name="info">Информация …</string>
+    <string name="flattr_this">Микро-Пожертвования !</string>
+    <string name="projPage">Домашняя страница</string>
+
+    <string name="themes">Темы …</string>
+    <string name="retro">Ретро</string>
+    <string name="Day">День</string>
+    <string name="Night">Ночь</string>
+</resources>
