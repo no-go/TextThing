@@ -1,0 +1,1 @@
+It is a simple text file editor to write some notes or change files.

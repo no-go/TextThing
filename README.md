@@ -11,6 +11,8 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 <a href="https://play.google.com/store/apps/details?id=click.dummer.textthing" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
 
+You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-go/TextThing/raw/master/app/release/app-release.apk)
+
 ## App Icon
 
 ![The App Icon](icon.png)
@@ -24,7 +26,7 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 - use the App to write notes
 - stores changes on closing or pausing the App (optionaly)
 - set your favorite font size and switch between normal or monospace style
-- languages: english, japanese, german, french
+- languages: english, japanese, german, russian, french
 - a **save now** button in preferences
 - very small widget added
 
@@ -44,6 +46,10 @@ The blue colors are fixed and based on the 1980er C64 Homecomputer. It works on 
 ### French translation
 
 Thanks to [xin](https://github.com/xinxinxinxinxin) for a french translation!
+
+### Russian translation
+
+Thanks to [Alexey](https://github.com/alexxxdev) for a russian translation!
 
 ### Japanese translation
 

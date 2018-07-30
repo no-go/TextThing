@@ -1,0 +1,23 @@
+It is a simple text file editor for Android. You can use it via a file manager app. I use it to write some notes. The fixed default file path is <i>Documents/click.dummer.textthing/notes.txt</i> . If you open the app, this file will be opened, created and used for store.
+
+<b>There is no file manager integrated!</b>
+
+Features:
+
+👉 Themes: Retro, Day, Night
+👉 Donate/Homepage Link added
+👉 Text file editor for your favorite file manager (opens every plain Text files)
+👉 App creates and opens Documents/click.dummer.textthing/notes.txt as default
+👉 use the App to write notes
+👉 stores changes on closing or on pausing the App (optionaly)
+👉 set your favorite font size and switch between normal or monospace style
+👉 languages: english, japanese, german, russian, french
+👉 a save button
+👉 very small widget added
+
+
+Thanks to <a href="https://github.com/xinxinxinxinxin">xin</a> for a french translation!
+
+Thanks to <a href="https://github.com/alexxxdev">Alexey</a> for a russian translation!
+
+Thanks to <a href="https://github.com/naofum">naofum</a> for a japanese translation!
