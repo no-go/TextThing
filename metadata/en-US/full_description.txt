@@ -5,11 +5,10 @@ It is a simple text file editor for Android. You can use it via a file manager a
 Features:
 
 👉 Themes: Retro, Day, Night
-👉 Donate/Homepage Link added
 👉 Text file editor for your favorite file manager (opens every plain Text files)
 👉 App creates and opens Documents/click.dummer.textthing/notes.txt as default
 👉 use the App to write notes
-👉 stores changes on closing or on pausing the App (optionaly)
+👉 stores changes on closing or on pausing the App (optional)
 👉 set your favorite font size and switch between normal or monospace style
 👉 languages: english, japanese, german, russian, french
 👉 a save button

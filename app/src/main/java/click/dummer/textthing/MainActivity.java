@@ -2,6 +2,7 @@ package click.dummer.textthing;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.graphics.Typeface;
 import android.net.Uri;
@@ -9,6 +10,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.os.Environment;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
@@ -26,13 +28,12 @@ import java.io.FileInputStream;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.InputStreamReader;
-import java.io.UnsupportedEncodingException;
+
+import static android.Manifest.*;
 
 public class MainActivity extends AppCompatActivity {
     private static final String PROJECT_LINK = "http://no-go.github.io/TextThing/";
     private static final String PROJECT2_LINK = "http://style64.org/c64-truetype";
-    private static final String FLATTR_ID = "o6wo7q";
-    private String FLATTR_LINK;
 
     private SharedPreferences mPreferences;
     private boolean isMono;
@@ -53,13 +54,6 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         fromExtern = false;
-
-        try {
-            FLATTR_LINK = "https://flattr.com/submit/auto?fid="+FLATTR_ID+"&url="+
-                    java.net.URLEncoder.encode(PROJECT_LINK, "ISO-8859-1");
-        } catch (UnsupportedEncodingException e) {
-            e.printStackTrace();
-        }
 
         contentView = (TextView) findViewById(R.id.editText);
         mainView = (ViewGroup) findViewById(R.id.mainView);
@@ -88,6 +82,9 @@ public class MainActivity extends AppCompatActivity {
             case 3:
                 themeC64();
                 break;
+            case 4:
+                themeGreen();
+                break;
             default:
                 themeRetro();
                 break;
@@ -105,9 +102,6 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.biggerSize:
                         fontSize = fontSize * 1.1f;
-                        break;
-                    case R.id.saveNow:
-                        saveNow();
                         break;
                     case R.id.monoStyle:
                         if (item.isChecked() == false) {
@@ -151,10 +145,11 @@ public class MainActivity extends AppCompatActivity {
                         themeNight();
                         break;
 
-                    case R.id.action_flattr:
-                        Intent intentFlattr = new Intent(Intent.ACTION_VIEW, Uri.parse(FLATTR_LINK));
-                        startActivity(intentFlattr);
+                    case R.id.theme_green:
+                        item.setChecked(true);
+                        themeGreen();
                         break;
+
                     case R.id.action_project:
                         Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
                         startActivity(intentProj);
@@ -186,10 +181,12 @@ public class MainActivity extends AppCompatActivity {
                 MenuItem mi2 = popup.getMenu().findItem(R.id.theme_night);
                 MenuItem mi3 = popup.getMenu().findItem(R.id.autoSave);
                 MenuItem mi4 = popup.getMenu().findItem(R.id.theme_c64);
+                MenuItem mi5 = popup.getMenu().findItem(R.id.theme_green);
                 if (themeNr == 0) mi0.setChecked(true);
                 if (themeNr == 1) mi1.setChecked(true);
                 if (themeNr == 2) mi2.setChecked(true);
                 if (themeNr == 3) mi4.setChecked(true);
+                if (themeNr == 4) mi5.setChecked(true);
                 mi.setChecked(isMono);
                 mi3.setChecked(autoSave);
                 popup.show();
@@ -215,34 +212,15 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         } else {
-            // opening App as without a filemanager and use the default file
+            // opening App without a filemanager and use the default file
             fromExtern = false;
 
             Log.d(App.PACKAGE_NAME, "intent.getData() is Null - use App with default File");
-            File file = null;
-            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
-                file = new File(
-                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
-                        App.PACKAGE_NAME
-                );
-            } else {
-                file = new File(Environment.getExternalStorageDirectory() + "/Documents/"+App.PACKAGE_NAME);
-            }
-
-            String path = file.getPath() + App.NOTE_FILENAME;
-            try {
-                Log.d(App.PACKAGE_NAME, "mkdirs()");
-                file.mkdirs();
-                file = new File(path);
-                if (!file.exists()) file.createNewFile();
-                data = Uri.fromFile(file);
+            if (PermissionUtils.readGranted(this)) {
                 loadNow();
-            } catch (Exception e) {
-                Toast.makeText(
-                        getApplicationContext(),
-                        getString(R.string.errAccess) + "\n" + data.getPath(),
-                        Toast.LENGTH_LONG
-                ).show();
+            } else {
+                String[] permissions = new String[]{permission.READ_EXTERNAL_STORAGE, permission.WRITE_EXTERNAL_STORAGE};
+                PermissionUtils.requestPermissions(this, App.READ_PERMISSION_REQ, permissions);
             }
         }
     }
@@ -348,13 +326,36 @@ public class MainActivity extends AppCompatActivity {
         btn.setTypeface(c64Font);
     }
 
+    void themeGreen() {
+        themeNr = 4;
+        isMono = true;
+        contentView.setTypeface(Typeface.MONOSPACE);
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightGreen)
+        );
+        btn.setTextColor(Color.WHITE);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkGreen)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightGreen)
+        );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.LightGreen)
+            );
+        }
+        contentView.setTypeface(c64Font);
+        btn.setTypeface(c64Font);
+    }
+
 
     @Override
     protected void onPause() {
         super.onPause();
         Log.d(App.PACKAGE_NAME, "onPause()");
 
-        if (data != null && autoSave && !fromExtern) {
+        if (data != null && autoSave && !fromExtern && PermissionUtils.writeGranted(this)) {
             String path = data.getPath();
             if (path != null) {
                 try {
@@ -381,7 +382,7 @@ public class MainActivity extends AppCompatActivity {
         super.onResume();
         Log.d(App.PACKAGE_NAME, "onResume()");
 
-        if (data != null && autoSave && !fromExtern) {
+        if (data != null && autoSave && !fromExtern && PermissionUtils.readGranted(this)) {
             String path = data.getPath();
             if (path != null) {
                 try {
@@ -426,17 +427,46 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickSaveButton(View v) {
-        saveNow();
+        if (PermissionUtils.writeGranted(this)) {
+            saveNow();
+        } else {
+            String[] permissions = new String[]{permission.WRITE_EXTERNAL_STORAGE, permission.READ_EXTERNAL_STORAGE};
+            PermissionUtils.requestPermissions(this, App.WRITE_PERMISSION_REQ, permissions);
+        }
     }
 
     void saveNow() {
         if (data != null) {
-            String path = data.getPath();
+            File file = null;
+            if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+                file = new File(
+                        Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                        App.PACKAGE_NAME
+                );
+            } else {
+                file = new File(Environment.getExternalStorageDirectory() + "/Documents/"+App.PACKAGE_NAME);
+            }
+
+            String path = file.getPath() + App.NOTE_FILENAME;
+            try {
+                Log.d(App.PACKAGE_NAME, "mkdirs()");
+                file.mkdirs();
+                file = new File(path);
+                if (!file.exists()) file.createNewFile();
+            } catch (Exception e) {
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.errAccess) + "\n" + data.getPath(),
+                        Toast.LENGTH_LONG
+                ).show();
+            }
+
+            path = data.getPath();
             if (path != null) {
                 try {
                     Log.d(App.PACKAGE_NAME, "saveNow()");
                     path = PathUtil.getPath(getApplicationContext(), data);
-                    File file = new File(path);
+                    file = new File(path);
                     FileOutputStream fos = new FileOutputStream(file);
                     fos.write(contentView.getText().toString().getBytes());
                     fos.flush();
@@ -459,30 +489,89 @@ public class MainActivity extends AppCompatActivity {
     }
 
     void loadNow() {
-        String path = data.getPath();
-        if (path != null) {
-            try {
-                Log.d(App.PACKAGE_NAME, "loadNow()");
-                path = PathUtil.getPath(getApplicationContext(), data);
-                File file = new File(path);
+        File file = null;
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.KITKAT) {
+            file = new File(
+                    Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOCUMENTS),
+                    App.PACKAGE_NAME
+            );
+        } else {
+            file = new File(Environment.getExternalStorageDirectory() + "/Documents/"+App.PACKAGE_NAME);
+        }
 
-                BufferedReader bufferedReader = new BufferedReader(
-                        new InputStreamReader(new FileInputStream(file))
-                );
-                String text = "";
-                while (bufferedReader.ready()) {
-                    text += bufferedReader.readLine() + "\n";
+        String path = file.getPath() + App.NOTE_FILENAME;
+        try {
+            Log.d(App.PACKAGE_NAME, "mkdirs()");
+            file.mkdirs();
+            file = new File(path);
+            if (!file.exists()) file.createNewFile();
+            data = Uri.fromFile(file);
+
+            path = data.getPath();
+            if (path != null) {
+                try {
+                    Log.d(App.PACKAGE_NAME, "loadNow()");
+                    path = PathUtil.getPath(getApplicationContext(), data);
+                    file = new File(path);
+
+                    BufferedReader bufferedReader = new BufferedReader(
+                            new InputStreamReader(new FileInputStream(file))
+                    );
+                    String text = "";
+                    while (bufferedReader.ready()) {
+                        text += bufferedReader.readLine() + "\n";
+                    }
+                    contentView.setText(text);
+
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(
+                            getApplicationContext(),
+                            getString(R.string.errRead) + "\n" + path,
+                            Toast.LENGTH_LONG
+                    ).show();
                 }
-                contentView.setText(text);
+            }
 
-            } catch (Exception e) {
-                e.printStackTrace();
+        } catch (Exception e) {
+            if (data != null) {
                 Toast.makeText(
                         getApplicationContext(),
-                        getString(R.string.errRead) + "\n" + path,
+                        getString(R.string.errAccess) + "\n" + data.getPath(),
+                        Toast.LENGTH_LONG
+                ).show();
+            } else {
+                Toast.makeText(
+                        getApplicationContext(),
+                        getString(R.string.errAccess),
                         Toast.LENGTH_LONG
                 ).show();
             }
+        }
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        boolean granted = false;
+        switch (requestCode) {
+            case App.READ_PERMISSION_REQ:
+                granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (granted) {
+                    loadNow();
+                } else {
+                    //nobody knows what to do
+                }
+                break;
+            case App.WRITE_PERMISSION_REQ:
+                granted = grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED;
+                if (granted) {
+                    saveNow();
+                } else {
+                    //nobody knows what to do
+                }
+                break;
+            default:
+                super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         }
     }
 }

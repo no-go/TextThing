@@ -60,6 +60,10 @@ public class WidgetUpdateService extends Service {
                 //views = new RemoteViews(getPackageName(), R.layout.c64_widget);
                 views = new RemoteViews(getPackageName(), R.layout.c64_widget_test);
                 break;
+            case 4:
+                //views = new RemoteViews(getPackageName(), R.layout.c64_widget);
+                views = new RemoteViews(getPackageName(), R.layout.green_widget);
+                break;
             default:
                 if(isMono) {
                     views = new RemoteViews(getPackageName(), R.layout.retro_widget_m);

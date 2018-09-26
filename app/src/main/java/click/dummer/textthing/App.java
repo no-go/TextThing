@@ -16,6 +16,9 @@ public class App extends Application {
 
     public static final String NOTE_FILENAME = "/notes.txt";
 
+    public static final int READ_PERMISSION_REQ = 23;
+    public static final int WRITE_PERMISSION_REQ = 42;
+
     @Override
     public void onCreate() {
         super.onCreate();

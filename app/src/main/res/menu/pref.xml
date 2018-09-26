@@ -3,10 +3,6 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/saveNow"
-        android:title="@string/saveNow"/>
-
-    <item
         android:id="@+id/smallerSize"
         android:title="@string/smaller"/>
     <item
@@ -42,6 +38,9 @@
                 <item
                     android:id="@+id/theme_c64"
                     android:title="c64 native" />
+                <item
+                    android:id="@+id/theme_green"
+                    android:title="@string/Green" />
             </group>
         </menu>
     </item>
@@ -50,9 +49,6 @@
         android:id="@+id/Info"
         android:title="@string/info">
         <menu>
-            <item
-                android:id="@+id/action_flattr"
-                android:title="@string/flattr_this" />
             <item
                 android:id="@+id/action_project"
                 android:title="@string/projPage" />

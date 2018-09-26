@@ -20,14 +20,13 @@ You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-g
 ## Features
 
 - Themes: Retro, Day, Night
-- Donate/Homepage Link added
 - Text file editor for your favorite file manager (opens every plain Text files)
 - App creates and opens Documents/click.dummer.textthing/notes.txt as default
 - use the App to write notes
 - stores changes on closing or pausing the App (optionaly)
 - set your favorite font size and switch between normal or monospace style
 - languages: english, japanese, german, russian, french
-- a **save now** button in preferences
+- a **save now** button
 - very small widget added
 
 ## todos

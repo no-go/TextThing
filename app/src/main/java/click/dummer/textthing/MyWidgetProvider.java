@@ -41,17 +41,26 @@ public class MyWidgetProvider extends AppWidgetProvider {
             int widgetId = appWidgetIds[i];
 
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.retro_widget);
-            Intent intent = new Intent(context, MyWidgetProvider.class);
 
-            intent.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
-            intent.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
-            intent.putExtra("width", width);
-            intent.putExtra("height", height);
+//          if you want widget update on click !!!
 
-            PendingIntent pendingIntent = PendingIntent.getBroadcast(
-                    context, widgetId, intent, PendingIntent.FLAG_UPDATE_CURRENT
+            Intent intentU = new Intent(context, MyWidgetProvider.class);
+            intentU.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
+            intentU.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
+            intentU.putExtra("width", width);
+            intentU.putExtra("height", height);
+            PendingIntent pendingIntentU = PendingIntent.getBroadcast(
+                    context, widgetId, intentU, PendingIntent.FLAG_UPDATE_CURRENT
             );
-            remoteViews.setOnClickPendingIntent(R.id.wContentLayout, pendingIntent);
+
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
+            PendingIntent pendingIntent = PendingIntent.getActivity(
+                    context, 0, intent, PendingIntent.FLAG_UPDATE_CURRENT
+            );
+
+            remoteViews.setOnClickPendingIntent(R.id.wContent, pendingIntent);
+            remoteViews.setOnClickPendingIntent(R.id.wTextApp, pendingIntentU);
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
     }

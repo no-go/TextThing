@@ -15,4 +15,7 @@
     <color name="MiddleNight">#440000</color>
     <color name="LightNight">#cc0000</color>
 
+    <color name="DarkGreen">#203000</color>
+    <color name="LightGreen">#40dd20</color>
+
 </resources>
