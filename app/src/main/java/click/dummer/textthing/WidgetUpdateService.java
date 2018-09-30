@@ -13,7 +13,11 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
+import android.text.Layout;
+import android.text.StaticLayout;
+import android.text.TextPaint;
 import android.util.Log;
 import android.widget.RemoteViews;
 import android.widget.Toast;
@@ -32,6 +36,13 @@ public class WidgetUpdateService extends Service {
     @Override
     public void onCreate() {
         super.onCreate();
+        /*
+        NotificationCompat.Builder builder =
+                new NotificationCompat.Builder(this, "OreoSucks")
+                        .setContentTitle("")
+                        .setContentText("");
+        startForeground(0, builder.build());
+        */
     }
 
     @Override
@@ -100,26 +111,37 @@ public class WidgetUpdateService extends Service {
             while (bufferedReader.ready()) {
                 text += bufferedReader.readLine() + "\n";
             }
-/*            if (themeNr == 3) {
+            if (themeNr == 4) {
                 //AppWidgetManager.getInstance(this).getAppWidgetOptions(0).getBundle(AppWidgetManager.O)
-                int width = intent.getIntExtra("width", 73);
-                int height = intent.getIntExtra("height", 73);
+                int width = 250; //intent.getIntExtra("width", 73);
+                int height = 350; //intent.getIntExtra("height", 73);
                 Bitmap myBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 Canvas myCanvas = new Canvas(myBitmap);
-                Paint paint = new Paint();
+
+                TextPaint paint = new TextPaint();
+
                 Typeface c64 = Typeface.createFromAsset(this.getAssets(), "fonts/c64pro_mono.ttf");
                 paint.setAntiAlias(true);
                 paint.setSubpixelText(true);
                 paint.setTypeface(c64);
                 paint.setStyle(Paint.Style.FILL);
-                paint.setColor(ContextCompat.getColor(this, R.color.LightRetro));
+                paint.setColor(ContextCompat.getColor(this, R.color.LightGreen));
                 paint.setTextSize(9);
                 paint.setTextAlign(Paint.Align.LEFT);
-                myCanvas.drawText(text, 0, 11, paint);
+
+                int twidth = (int) paint.measureText(text);
+                StaticLayout staticLayout = new StaticLayout(
+                        text, paint, (int) twidth,
+                        Layout.Alignment.ALIGN_NORMAL,
+                        1.0f,
+                        0,
+                        false
+                );
+                staticLayout.draw(myCanvas);
                 views.setImageViewBitmap(R.id.wContent, myBitmap);
             } else {
-*/                views.setTextViewText(R.id.wContent, text);
-//            }
+                views.setTextViewText(R.id.wContent, text);
+            }
 
         } catch (Exception e) {
             Toast.makeText(

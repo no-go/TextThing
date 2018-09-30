@@ -6,13 +6,14 @@ import android.appwidget.AppWidgetManager;
 import android.appwidget.AppWidgetProvider;
 import android.content.Context;
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 
 import java.util.Calendar;
 
 public class MyWidgetProvider extends AppWidgetProvider {
-    public static final int LONG_UPDATE  = 30 * 60 * 1000;
+    public static final int LONG_UPDATE  = 1 * 60 * 1000; // 1 minute
     public static int width = 90;
     public static int height = 70;
 
@@ -32,7 +33,11 @@ public class MyWidgetProvider extends AppWidgetProvider {
             Intent in = new Intent(context, WidgetUpdateService.class);
 
             if (service == null) {
-                service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+                if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                    service = PendingIntent.getForegroundService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+                } else {
+                    service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+                }
             }
 
             m.setRepeating(AlarmManager.RTC, TIME.getTime().getTime(), LONG_UPDATE, service);
@@ -43,7 +48,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
             RemoteViews remoteViews = new RemoteViews(context.getPackageName(), R.layout.retro_widget);
 
 //          if you want widget update on click !!!
-
+/*
             Intent intentU = new Intent(context, MyWidgetProvider.class);
             intentU.setAction(AppWidgetManager.ACTION_APPWIDGET_UPDATE);
             intentU.putExtra(AppWidgetManager.EXTRA_APPWIDGET_IDS, appWidgetIds);
@@ -52,7 +57,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
             PendingIntent pendingIntentU = PendingIntent.getBroadcast(
                     context, widgetId, intentU, PendingIntent.FLAG_UPDATE_CURRENT
             );
-
+*/
             Intent intent = new Intent(context, MainActivity.class);
             intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
             PendingIntent pendingIntent = PendingIntent.getActivity(
@@ -60,7 +65,7 @@ public class MyWidgetProvider extends AppWidgetProvider {
             );
 
             remoteViews.setOnClickPendingIntent(R.id.wContent, pendingIntent);
-            remoteViews.setOnClickPendingIntent(R.id.wTextApp, pendingIntentU);
+            //remoteViews.setOnClickPendingIntent(R.id.wTextApp, pendingIntent);
             appWidgetManager.updateAppWidget(widgetId, remoteViews);
         }
     }
@@ -91,6 +96,6 @@ public class MyWidgetProvider extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        m.cancel(service);
+        if (m != null) m.cancel(service);
     }
 }
