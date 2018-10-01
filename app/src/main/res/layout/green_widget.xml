@@ -47,15 +47,6 @@
             android:background="@color/DarkGreen"
             android:padding="0dp"
             android:textSize="12sp" />
-        <!-- TextView
-            android:id="@+id/wContent"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:background="@color/DarkGreen"
-            android:padding="0dp"
-            android:text="..."
-            android:textColor="@color/LightGreen"
-            android:textSize="8dp" /-->
     </LinearLayout>
 
 </RelativeLayout>

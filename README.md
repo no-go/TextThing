@@ -11,7 +11,7 @@ Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2
 <a href="https://play.google.com/store/apps/details?id=click.dummer.textthing" target="_blank">
 <img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
 
-You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-go/TextThing/raw/master/app/release/app-release.apk)
+You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
 
 ## App Icon
 
@@ -27,12 +27,7 @@ You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-g
 - set your favorite font size and switch between normal or monospace style
 - languages: english, japanese, german, russian, french
 - a **save now** button
-- very small widget added
-
-## todos
-
-- sometimes widget is not resizable (only on first placement)
-- Add classic c64 font to the widget (have codeing troubble with getting widget size to fit the image with fonts)
+- very small widget added (needs phone restart)
 
 ## Screenshots
 

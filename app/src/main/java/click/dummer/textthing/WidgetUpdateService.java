@@ -68,11 +68,9 @@ public class WidgetUpdateService extends Service {
                 }
                 break;
             case 3:
-                //views = new RemoteViews(getPackageName(), R.layout.c64_widget);
-                views = new RemoteViews(getPackageName(), R.layout.c64_widget_test);
+                views = new RemoteViews(getPackageName(), R.layout.c64_widget);
                 break;
             case 4:
-                //views = new RemoteViews(getPackageName(), R.layout.c64_widget);
                 views = new RemoteViews(getPackageName(), R.layout.green_widget);
                 break;
             default:
@@ -111,7 +109,7 @@ public class WidgetUpdateService extends Service {
             while (bufferedReader.ready()) {
                 text += bufferedReader.readLine() + "\n";
             }
-            if (themeNr == 4) {
+            if (themeNr == 3 || themeNr == 4) {
                 //AppWidgetManager.getInstance(this).getAppWidgetOptions(0).getBundle(AppWidgetManager.O)
                 int width = 250; //intent.getIntExtra("width", 73);
                 int height = 350; //intent.getIntExtra("height", 73);
@@ -125,7 +123,11 @@ public class WidgetUpdateService extends Service {
                 paint.setSubpixelText(true);
                 paint.setTypeface(c64);
                 paint.setStyle(Paint.Style.FILL);
-                paint.setColor(ContextCompat.getColor(this, R.color.LightGreen));
+                if (themeNr == 3) {
+                    paint.setColor(ContextCompat.getColor(this, R.color.LightRetro));
+                } else {
+                    paint.setColor(ContextCompat.getColor(this, R.color.LightGreen));
+                }
                 paint.setTextSize(9);
                 paint.setTextAlign(Paint.Align.LEFT);
 

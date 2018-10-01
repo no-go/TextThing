@@ -449,8 +449,10 @@ public class MainActivity extends AppCompatActivity {
 
             String path = file.getPath() + App.NOTE_FILENAME;
             try {
-                Log.d(App.PACKAGE_NAME, "mkdirs()");
-                file.mkdirs();
+                if (!file.exists()) {
+                    Log.d(App.PACKAGE_NAME, "on save mkdirs()");
+                    file.mkdirs();
+                }
                 file = new File(path);
                 if (!file.exists()) file.createNewFile();
             } catch (Exception e) {
@@ -501,8 +503,10 @@ public class MainActivity extends AppCompatActivity {
 
         String path = file.getPath() + App.NOTE_FILENAME;
         try {
-            Log.d(App.PACKAGE_NAME, "mkdirs()");
-            file.mkdirs();
+            if (!file.exists()) {
+                Log.d(App.PACKAGE_NAME, "on load mkdirs()");
+                file.mkdirs();
+            }
             file = new File(path);
             if (!file.exists()) file.createNewFile();
             data = Uri.fromFile(file);

@@ -34,7 +34,8 @@ public class MyWidgetProvider extends AppWidgetProvider {
 
             if (service == null) {
                 if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-                    service = PendingIntent.getForegroundService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+                    //service = PendingIntent.getForegroundService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
+                    service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
                 } else {
                     service = PendingIntent.getService(context, 0, in, PendingIntent.FLAG_CANCEL_CURRENT);
                 }
@@ -96,6 +97,6 @@ public class MyWidgetProvider extends AppWidgetProvider {
     @Override
     public void onDisabled(Context context) {
         final AlarmManager m = (AlarmManager) context.getSystemService(Context.ALARM_SERVICE);
-        if (m != null) m.cancel(service);
+        if (m != null && service != null) m.cancel(service);
     }
 }

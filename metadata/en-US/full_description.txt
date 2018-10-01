@@ -12,7 +12,7 @@ Features:
 👉 set your favorite font size and switch between normal or monospace style
 👉 languages: english, japanese, german, russian, french
 👉 a save button
-👉 very small widget added
+👉 very small widget added (needs phone restart)
 
 
 Thanks to <a href="https://github.com/xinxinxinxinxin">xin</a> for a french translation!
