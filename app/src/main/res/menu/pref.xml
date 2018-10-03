@@ -41,6 +41,9 @@
                 <item
                     android:id="@+id/theme_green"
                     android:title="@string/Green" />
+                <item
+                    android:id="@+id/theme_panther"
+                    android:title="@string/Panther" />
             </group>
         </menu>
     </item>

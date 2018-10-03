@@ -2,8 +2,9 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="click.dummer.textthing">
 
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
 
     <application
         android:allowBackup="true"
@@ -34,7 +35,16 @@
             <meta-data android:name="android.appwidget.provider" android:resource="@xml/mywidget" />
         </receiver>
 
-        <service android:name="click.dummer.textthing.WidgetUpdateService" />
+        <receiver android:name="click.dummer.textthing.AppWidgetUpdateReceiver" android:exported="false">
+            <intent-filter>
+                <action android:name="click.dummer.textthing.widget.UPDATE" />
+            </intent-filter>
+        </receiver>
+
+        <service
+            android:name="click.dummer.textthing.WidgetUpdateService"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
     </application>
 
 </manifest>

@@ -18,4 +18,8 @@
     <color name="DarkGreen">#203000</color>
     <color name="LightGreen">#40dd20</color>
 
+    <color name="DarkPanther">#500080</color>
+    <color name="MiddlePanther">#00d0d0</color>
+    <color name="LightPanther">#ff50ff</color>
+
 </resources>

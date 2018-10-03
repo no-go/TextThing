@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
     private ViewGroup mainView;
 
     private Typeface c64Font;
+    private Typeface intuitiveFont;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -66,6 +67,7 @@ public class MainActivity extends AppCompatActivity {
         contentView.setTextSize(fontSize);
 
         c64Font = Typeface.createFromAsset(getAssets(), "fonts/c64pro_mono.ttf");
+        intuitiveFont = Typeface.createFromAsset(getAssets(), "fonts/intuitive.ttf");
 
         if (isMono == true) {
             contentView.setTypeface(Typeface.MONOSPACE);
@@ -84,6 +86,9 @@ public class MainActivity extends AppCompatActivity {
                 break;
             case 4:
                 themeGreen();
+                break;
+            case 5:
+                themePanther();
                 break;
             default:
                 themeRetro();
@@ -150,6 +155,11 @@ public class MainActivity extends AppCompatActivity {
                         themeGreen();
                         break;
 
+                    case R.id.theme_panther:
+                        item.setChecked(true);
+                        themePanther();
+                        break;
+
                     case R.id.action_project:
                         Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
                         startActivity(intentProj);
@@ -167,7 +177,9 @@ public class MainActivity extends AppCompatActivity {
                 editor.putBoolean(App.PREF_Mono, isMono);
                 editor.putBoolean(App.PREF_AutoSave, autoSave);
                 editor.putInt(App.PREF_Theme, themeNr);
-                editor.apply();
+                editor.commit();
+                Intent i = new Intent("click.dummer.textthing.widget.UPDATE");
+                sendBroadcast(i);
                 return true;
             }
         });
@@ -182,11 +194,13 @@ public class MainActivity extends AppCompatActivity {
                 MenuItem mi3 = popup.getMenu().findItem(R.id.autoSave);
                 MenuItem mi4 = popup.getMenu().findItem(R.id.theme_c64);
                 MenuItem mi5 = popup.getMenu().findItem(R.id.theme_green);
+                MenuItem mi6 = popup.getMenu().findItem(R.id.theme_panther);
                 if (themeNr == 0) mi0.setChecked(true);
                 if (themeNr == 1) mi1.setChecked(true);
                 if (themeNr == 2) mi2.setChecked(true);
                 if (themeNr == 3) mi4.setChecked(true);
                 if (themeNr == 4) mi5.setChecked(true);
+                if (themeNr == 5) mi6.setChecked(true);
                 mi.setChecked(isMono);
                 mi3.setChecked(autoSave);
                 popup.show();
@@ -349,6 +363,29 @@ public class MainActivity extends AppCompatActivity {
         btn.setTypeface(c64Font);
     }
 
+    void themePanther() {
+        themeNr = 5;
+        isMono = true;
+        contentView.setTypeface(Typeface.MONOSPACE);
+        mainView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightPanther)
+        );
+        btn.setTextColor(Color.BLACK);
+        contentView.setBackgroundColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.DarkPanther)
+        );
+        contentView.setTextColor(
+                ContextCompat.getColor(getApplicationContext(), R.color.LightPanther)
+        );
+        if (Build.VERSION.SDK_INT >= 21) {
+            getWindow().setStatusBarColor(
+                    ContextCompat.getColor(getApplicationContext(), R.color.MiddlePanther)
+            );
+        }
+        contentView.setTypeface(intuitiveFont);
+        btn.setTypeface(intuitiveFont);
+    }
+
 
     @Override
     protected void onPause() {
@@ -487,6 +524,8 @@ public class MainActivity extends AppCompatActivity {
                     ).show();
                 }
             }
+            Intent i = new Intent("click.dummer.textthing.widget.UPDATE");
+            sendBroadcast(i);
         }
     }
 

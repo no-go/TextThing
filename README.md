@@ -4,12 +4,8 @@ It is a simple text file editor for Android. You can use it via a file manager a
 
 **There is no file manager integrated!**
 
-Support me: <a href="https://flattr.com/submit/auto?fid=o6wo7q&url=https%3A%2F%2Fgithub.com%2Fno-go%2FTextThing" target="_blank">![Flattr This](flattr-badge-large.png)</a>
-
 <a href="https://f-droid.org/repository/browse/?fdid=click.dummer.textthing" target="_blank">
 <img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
-<a href="https://play.google.com/store/apps/details?id=click.dummer.textthing" target="_blank">
-<img src="https://play.google.com/intl/en_us/badges/images/generic/en-play-badge.png" alt="Get it on Google Play" height="90"/></a>
 
 You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
 

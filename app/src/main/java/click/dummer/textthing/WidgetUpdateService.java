@@ -13,6 +13,8 @@ import android.net.Uri;
 import android.os.Environment;
 import android.os.IBinder;
 import android.preference.PreferenceManager;
+import android.support.annotation.NonNull;
+import android.support.v4.app.JobIntentService;
 import android.support.v4.app.NotificationCompat;
 import android.support.v4.content.ContextCompat;
 import android.text.Layout;
@@ -27,26 +29,14 @@ import java.io.File;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
 
-public class WidgetUpdateService extends Service {
+public class WidgetUpdateService extends JobIntentService {
     private Uri data = null;
     private SharedPreferences mPreferences;
     private int themeNr;
     private boolean isMono;
 
     @Override
-    public void onCreate() {
-        super.onCreate();
-        /*
-        NotificationCompat.Builder builder =
-                new NotificationCompat.Builder(this, "OreoSucks")
-                        .setContentTitle("")
-                        .setContentText("");
-        startForeground(0, builder.build());
-        */
-    }
-
-    @Override
-    public int onStartCommand(Intent intent, int flags, int startId) {
+    protected void onHandleWork(@NonNull Intent intent) {
         mPreferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         isMono = mPreferences.getBoolean(App.PREF_Mono, App.DEFAULT_Mono);
         themeNr = mPreferences.getInt(App.PREF_Theme, App.DEFAULT_Theme);
@@ -73,6 +63,9 @@ public class WidgetUpdateService extends Service {
             case 4:
                 views = new RemoteViews(getPackageName(), R.layout.green_widget);
                 break;
+            case 5:
+                views = new RemoteViews(getPackageName(), R.layout.panther_widget);
+                break;
             default:
                 if(isMono) {
                     views = new RemoteViews(getPackageName(), R.layout.retro_widget_m);
@@ -96,8 +89,9 @@ public class WidgetUpdateService extends Service {
 
         String path = file.getPath() + App.NOTE_FILENAME;
         try {
-            Log.d(App.PACKAGE_NAME, "mkdirs()");
-            file.mkdirs();
+            if (!file.exists()) {
+                file.mkdirs();
+            }
             file = new File(path);
             if (!file.exists()) file.createNewFile();
             data = Uri.fromFile(file);
@@ -109,31 +103,37 @@ public class WidgetUpdateService extends Service {
             while (bufferedReader.ready()) {
                 text += bufferedReader.readLine() + "\n";
             }
-            if (themeNr == 3 || themeNr == 4) {
-                //AppWidgetManager.getInstance(this).getAppWidgetOptions(0).getBundle(AppWidgetManager.O)
-                int width = 250; //intent.getIntExtra("width", 73);
-                int height = 350; //intent.getIntExtra("height", 73);
+            if (themeNr == 3 || themeNr == 4 || themeNr == 5) {
+                int width = 400; //intent.getIntExtra("width", 400);
+                int height = 600; //intent.getIntExtra("height", 600);
                 Bitmap myBitmap = Bitmap.createBitmap(width, height, Bitmap.Config.ARGB_8888);
                 Canvas myCanvas = new Canvas(myBitmap);
 
                 TextPaint paint = new TextPaint();
 
                 Typeface c64 = Typeface.createFromAsset(this.getAssets(), "fonts/c64pro_mono.ttf");
+                Typeface intu = Typeface.createFromAsset(this.getAssets(), "fonts/intuitive.ttf");
                 paint.setAntiAlias(true);
                 paint.setSubpixelText(true);
-                paint.setTypeface(c64);
                 paint.setStyle(Paint.Style.FILL);
-                if (themeNr == 3) {
-                    paint.setColor(ContextCompat.getColor(this, R.color.LightRetro));
-                } else {
+                if (themeNr == 4) {
+                    paint.setTypeface(c64);
                     paint.setColor(ContextCompat.getColor(this, R.color.LightGreen));
+                    paint.setTextSize(9);
+                } else if (themeNr == 5) {
+                    paint.setTypeface(intu);
+                    paint.setColor(ContextCompat.getColor(this, R.color.LightPanther));
+                    paint.setTextSize(16);
+               } else {
+                    paint.setTypeface(c64);
+                    paint.setColor(ContextCompat.getColor(this, R.color.LightRetro));
+                    paint.setTextSize(9);
                 }
-                paint.setTextSize(9);
                 paint.setTextAlign(Paint.Align.LEFT);
 
-                int twidth = (int) paint.measureText(text);
+                //int twidth = (int) paint.measureText(text);
                 StaticLayout staticLayout = new StaticLayout(
-                        text, paint, (int) twidth,
+                        text, paint, (int) width,
                         Layout.Alignment.ALIGN_NORMAL,
                         1.0f,
                         0,
@@ -146,23 +146,12 @@ public class WidgetUpdateService extends Service {
             }
 
         } catch (Exception e) {
-            Toast.makeText(
-                    getApplicationContext(),
-                    getString(R.string.errAccess) + "\n" + data.getPath(),
-                    Toast.LENGTH_LONG
-            ).show();
+            e.printStackTrace();
         }
 
         // Push update for this widget to the home screen
         ComponentName thisWidget = new ComponentName(WidgetUpdateService.this, MyWidgetProvider.class);
         AppWidgetManager manager = AppWidgetManager.getInstance(WidgetUpdateService.this);
         manager.updateAppWidget(thisWidget, views);
-
-        return START_STICKY;
-    }
-
-    @Override
-    public IBinder onBind(Intent intent) {
-        return null;
     }
 }
