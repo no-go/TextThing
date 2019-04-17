@@ -4,13 +4,6 @@ It is a simple text file editor for Android. You can use it via a file manager a
 
 **There is no file manager integrated!**
 
-<a href="https://f-droid.org/repository/browse/?fdid=click.dummer.textthing" target="_blank">
-<img src="https://f-droid.org/badge/get-it-on.png" alt="Get it on F-Droid" height="90"/></a>
-
-You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
-
-## App Icon
-
 ![The App Icon](icon.png)
 
 ## Features
@@ -25,13 +18,20 @@ You can get a signed APK from here (Android 4.1+): [APK](https://github.com/no-g
 - a **save now** button
 - very small widget added (needs phone restart)
 
+## Get the App
+
+You can get a signed APK (4.1+) from [here](https://raw.githubusercontent.com/no-go/TextThing/master/app/release/click.dummer.textthing.apk)
+
+Alternative:
+
+<a href="https://f-droid.org/packages/click.dummer.textthing/" target="_blank">
+<img src="https://fdroid.gitlab.io/artwork/badge/get-it-on.png" alt="Get it on F-Droid" height="80"/></a>
+
 ## Screenshots
 
 The blue colors are fixed and based on the 1980er C64 Homecomputer. It works on 4.1.1+
 
 ![The blue colors are fixed and based on the 1980er C64 Homecomputer](screenshot-6.0.1.jpg) ![It runns under 4.1.1 Jelly Bean too.](screenshot-4.1.1.jpg)
-
-
 
 ### French translation
 
@@ -49,10 +49,10 @@ Thanks to [naofum](https://github.com/naofum) for a japanese translation!
 
 ## Links
 
-- [About Me](http://quantenwatch.de), [Jochen Peters Krefeld](http://dummer.click)
+- [Jochen Peters Krefeld](http://digisocken.de)
 - [App Home](http://no-go.github.io/TextThing/)
 - [Source](https://github.com/no-go/TextThing)
-- [APK File](https://raw.githubusercontent.com/no-go/TextThing/master/app/release/app-release.apk)
+- [APK File](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
 
 ## License
 
