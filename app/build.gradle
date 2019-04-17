@@ -2,15 +2,14 @@ apply plugin: 'com.android.application'
 
 android {
     compileSdkVersion 26
-    buildToolsVersion '27.0.3'
 
     defaultConfig {
         applicationId "click.dummer.textthing"
         minSdkVersion 16
         targetSdkVersion 26
         // gplay code is deadlockz
-       versionCode 211
-       versionName "2.11"
+       versionCode 212
+       versionName "2.12"
     }
     buildTypes {
         release {
