@@ -1,0 +1,1 @@
+Notizblock und kleiner Editor für reine Text-Dateien

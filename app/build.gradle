@@ -8,8 +8,8 @@ android {
         minSdkVersion 16
         targetSdkVersion 26
         // gplay code is deadlockz
-       versionCode 212
-       versionName "2.12"
+       versionCode 213
+       versionName "2.13"
     }
     buildTypes {
         release {

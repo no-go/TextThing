@@ -11,6 +11,7 @@
     <string name="errAccess">ошибка доступа</string>
     <string name="errWrite">ошибка записи</string>
     <string name="errRead">ошибка чтения</string>
+    <string name="open">Импорт …</string>
 
     <string name="info">Информация …</string>
     <string name="flattr_this">Микро-Пожертвования !</string>

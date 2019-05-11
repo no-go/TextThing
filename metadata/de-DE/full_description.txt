@@ -1,0 +1,22 @@
+Dies ist ein kleiner Text Datei Editor. Man kann ihn auch sehr gut als Notizblock verwenden. Beim Starten der App wird hierzu die Datei <i>Documents/click.dummer.textthing/notes.txt</i> als Standard geöffnet.
+
+Mit der Importieren-Funktion in den Einstellungen der App wird nur der System Dateimanager zum Öffnen verwendet. <b>Ein eigenen Dateimanager ist nicht in der App implementiert.</b>
+
+Funktionen:
+
+👉 Diverse Themes: Retro, C64, Day, Night, ...
+👉 In anderen Apps wird dieser Text Editor zur Darstellung vorgeschlagen
+👉 App erzeugt und speichert Documents/click.dummer.textthing/notes.txt als Standard
+👉 nützlich für Notizen
+👉 optional werden Änderungen beim Schließen oder Pausieren dauerhaft gespeichert
+👉 Neben den Themes lassen sich auch Schriftgröße und Stil anpassen
+👉 App Sprachen: englisch, japanisch, deutsch, russisch, französisch
+👉 Speichern Knopf
+👉 ein kleines Widget um Notizen auf Startbildschirm zu sehen
+
+
+Dank gilt <a href="https://github.com/xinxinxinxinxin">xin</a>  für eine französische Übersetzung!
+
+Dank gilt <a href="https://github.com/alexxxdev">Alexey</a> für eine russische Übersetzung!
+
+Dank gilt <a href="https://github.com/naofum">naofum</a> für eine japanische Übersetzung!

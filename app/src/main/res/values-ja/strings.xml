@@ -5,12 +5,13 @@
     <string name="bigger">大きく +</string>
     <string name="smaller">小さく -</string>
     <string name="monospace">monospace</string>
-    <string name="saveNow">SAVE NOW</string>
-    <string name="autoSave">auto save</string>
+    <string name="saveNow">今すぐ保存</string>
+    <string name="autoSave">自動的に保存</string>
     <string name="ok">ok</string>
     <string name="errAccess">アクセス時にエラー</string>
     <string name="errWrite">書き込み時にエラー</string>
     <string name="errRead">読み取り時にエラー</string>
+    <string name="open">インポート ...</string>
 
     <string name="info">情報 ...</string>
     <string name="flattr_this">マイクロ寄付 !</string>
@@ -21,5 +22,5 @@
     <string name="Day">日中</string>
     <string name="Night">夜間</string>
     <string name="Green">Green Punch</string>
-    <string name="Panther">Pink Panther</string>
+    <string name="Panther">ピンクパンサー</string>
 </resources>

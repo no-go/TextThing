@@ -34,6 +34,7 @@ import static android.Manifest.*;
 public class MainActivity extends AppCompatActivity {
     private static final String PROJECT_LINK = "http://no-go.github.io/TextThing/";
     private static final String PROJECT2_LINK = "http://style64.org/c64-truetype";
+    public static final int FILEREQCODE = 1234;
 
     private SharedPreferences mPreferences;
     private boolean isMono;
@@ -160,6 +161,12 @@ public class MainActivity extends AppCompatActivity {
                         themePanther();
                         break;
 
+                    case R.id.fileSelect:
+                        Intent intentFileChooser = new Intent()
+                                .setType("*/*")
+                                .setAction(Intent.ACTION_GET_CONTENT);
+                        startActivityForResult(Intent.createChooser(intentFileChooser, "Select a file"), FILEREQCODE);
+                        break;
                     case R.id.action_project:
                         Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));
                         startActivity(intentProj);
@@ -615,6 +622,32 @@ public class MainActivity extends AppCompatActivity {
                 break;
             default:
                 super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        }
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
+        super.onActivityResult(requestCode, resultCode, intent);
+        if(requestCode == FILEREQCODE && resultCode == RESULT_OK) {
+
+            if (intent != null) {
+                data = intent.getData();
+                fromExtern = true;
+
+                Log.d(App.PACKAGE_NAME, "intent.getData() is not Null - Use App via filemanager?");
+                try {
+                    InputStream input = getContentResolver().openInputStream(data);
+                    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(input));
+
+                    String text = "";
+                    while (bufferedReader.ready()) {
+                        text += bufferedReader.readLine() + "\n";
+                    }
+                    contentView.setText(text);
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
         }
     }
 }

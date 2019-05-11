@@ -1,6 +1,6 @@
 It is a simple text file editor for Android. You can use it via a file manager app. I use it to write some notes. The fixed default file path is <i>Documents/click.dummer.textthing/notes.txt</i> . If you open the app, this file will be opened, created and used for store.
 
-<b>There is no file manager integrated!</b>
+<b>There is no file manager integrated. The import feature uses the system filemanager.</b>
 
 Features:
 

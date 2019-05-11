@@ -8,6 +8,9 @@
     <item
         android:id="@+id/biggerSize"
         android:title="@string/bigger"/>
+    <item
+        android:id="@+id/fileSelect"
+        android:title="@string/open"/>
 
     <group android:checkableBehavior="all">
         <item
