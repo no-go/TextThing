@@ -11,7 +11,7 @@
     <string name="errAccess">error on access</string>
     <string name="errWrite">error on write</string>
     <string name="errRead">error on read</string>
-    <string name="open">import …</string>
+    <string name="open">open file …</string>
 
     <string name="info">Info …</string>
     <string name="flattr_this">Micro-Donate !</string>

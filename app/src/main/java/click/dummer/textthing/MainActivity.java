@@ -163,9 +163,9 @@ public class MainActivity extends AppCompatActivity {
 
                     case R.id.fileSelect:
                         Intent intentFileChooser = new Intent()
-                                .setType("*/*")
+                                .setType(Intent.normalizeMimeType("text/*"))
                                 .setAction(Intent.ACTION_GET_CONTENT);
-                        startActivityForResult(Intent.createChooser(intentFileChooser, "Select a file"), FILEREQCODE);
+                        startActivityForResult(Intent.createChooser(intentFileChooser, getString(R.string.open)), FILEREQCODE);
                         break;
                     case R.id.action_project:
                         Intent intentProj = new Intent(Intent.ACTION_VIEW, Uri.parse(PROJECT_LINK));

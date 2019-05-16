@@ -2,7 +2,7 @@
 
 It is a simple text file editor for Android. You can use it via a file manager app. I use it to write some notes. The fixed default file path is `Documents/click.dummer.textthing/notes.txt` . If you open the app, this file will be opened, created and used for store.
 
-**There is no file manager integrated!**
+**There is no file manager code integrated - it uses the system default**
 
 ![The App Icon](icon.png)
 
@@ -80,3 +80,15 @@ If you have any questions or concerns about my Privacy Policy or data processing
 ## Special thanks
 
 - Michael Grieswald on google play for a good/bad review. I made the "auto save" as an option after reading it.
+
+### Hints to fdroid
+
+to keep fdroiddata fork on your local and upstream fresh:
+
+- git add, commit, push
+- git remote add upstream https://gitlab.com/fdroid/fdroiddata.git
+- git fetch upstream
+- git pull upstream master (this is a merge)
+- git push
+
+other hints in Wortschatz repository
