@@ -1,0 +1,27 @@
+<resources>
+    <string name="app_name">Retro Text Editor</string>
+    <string name="preferences">Preferencias</string>
+    <string name="fontOptions">Fonte</string>
+    <string name="bigger">aumentar +</string>
+    <string name="smaller">diminuir -</string>
+    <string name="monospace">mono espaço</string>
+    <string name="saveNow">SALVO</string>
+    <string name="autoSave">Salvamento automático</string>
+    <string name="ok">ok</string>
+    <string name="errAccess">erro ao acessar</string>
+    <string name="errWrite">erro na escrita</string>
+    <string name="errRead">erro ao ler</string>
+    <string name="open">abrir arquivo …</string>
+
+    <string name="info">Info …</string>
+    <string name="flattr_this">"Micro-Doação!"</string>
+    <string name="projPage">Página inicial</string>
+
+    <string name="themes">Temas …</string>
+    <string name="retro">Retrô</string>
+    <string name="Day">Dia</string>
+    <string name="Night">Noite</string>
+    <string name="Green">Soco verde</string>
+    <string name="Panther">Pantera cor de rosa</string>
+    <string name="c64_native">c64 nativo</string>
+</resources>
