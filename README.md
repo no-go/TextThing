@@ -8,7 +8,7 @@ It is a simple text file editor for Android. You can use it via a file manager a
 
 ## Features
 
-- Themes: Retro, Day, Night
+- Themes: Retro, C64, Day, Night, Green Punch, Pink Panther
 - Text file editor for your favorite file manager (opens every plain Text files)
 - App creates and opens Documents/click.dummer.textthing/notes.txt as default
 - use the App to write notes

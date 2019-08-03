@@ -4,7 +4,7 @@ Mit der Importieren-Funktion in den Einstellungen der App wird nur der System Da
 
 Funktionen:
 
-👉 Diverse Themes: Retro, C64, Day, Night, ...
+👉 Themes: Retro, C64, Day, Night, Green Punch, Pink Panther
 👉 In anderen Apps wird dieser Text Editor zur Darstellung vorgeschlagen
 👉 App erzeugt und speichert Documents/click.dummer.textthing/notes.txt als Standard
 👉 nützlich für Notizen
