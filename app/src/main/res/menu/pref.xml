@@ -40,7 +40,7 @@
                     android:title="@string/Night" />
                 <item
                     android:id="@+id/theme_c64"
-                    android:title="c64 native" />
+                    android:title="@string/c64_native" />
                 <item
                     android:id="@+id/theme_green"
                     android:title="@string/Green" />
