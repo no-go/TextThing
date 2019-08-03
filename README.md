@@ -14,13 +14,13 @@ It is a simple text file editor for Android. You can use it via a file manager a
 - use the App to write notes
 - stores changes on closing or pausing the App (optionaly)
 - set your favorite font size and switch between normal or monospace style
-- languages: english, japanese, german, russian, french
+- languages: english, japanese, german, russian, french, brazilian portuguese
 - a **save now** button
 - very small widget added (needs phone restart)
 
 ## Get the App
 
-You can get a signed APK (4.1+) from [here](https://raw.githubusercontent.com/no-go/TextThing/master/app/release/click.dummer.textthing.apk)
+You can get a signed APK (4.1+) from [here](https://raw.githubusercontent.com/no-go/TextThing/master/app/release/click.dummer.textthing.apk), but it could be a bit outdated.
 
 Alternative:
 
@@ -47,12 +47,16 @@ Thanks to [naofum](https://github.com/naofum) for a japanese translation!
 
 ![japanese translation](stuff/japanese_translation.jpg)
 
+### Brazilian Portuguese translation
+
+Thanks to [Paradoxo](https://www.youtube.com/user/Paradoxo10) for a brazilian portuguese translation!
+
 ## Links
 
 - [Jochen Peters Krefeld](http://digisocken.de)
 - [App Home](http://no-go.github.io/TextThing/)
 - [Source](https://github.com/no-go/TextThing)
-- [APK File](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
+- [maybe old APK File](https://github.com/no-go/TextThing/raw/master/app/release/click.dummer.textthing.apk)
 
 ## License
 
@@ -77,7 +81,7 @@ The google play store collect non-personal information such as the data of insta
 
 If you have any questions or concerns about my Privacy Policy or data processing, please contact me.
 
-## Special thanks
+## Special Thanks
 
 - Michael Grieswald on google play for a good/bad review. I made the "auto save" as an option after reading it.
 

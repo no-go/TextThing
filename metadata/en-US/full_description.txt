@@ -10,7 +10,7 @@ Features:
 👉 use the App to write notes
 👉 stores changes on closing or on pausing the App (optional)
 👉 set your favorite font size and switch between normal or monospace style
-👉 languages: english, japanese, german, russian, french
+👉 languages: english, japanese, german, russian, french, brazilian portuguese
 👉 a save button
 👉 very small widget added (needs phone restart)
 
@@ -20,3 +20,5 @@ Thanks to <a href="https://github.com/xinxinxinxinxin">xin</a> for a french tran
 Thanks to <a href="https://github.com/alexxxdev">Alexey</a> for a russian translation!
 
 Thanks to <a href="https://github.com/naofum">naofum</a> for a japanese translation!
+
+Thanks to <a href="https://www.youtube.com/user/Paradoxo10">Paradoxo</a> for a brazilian portuguese translation!

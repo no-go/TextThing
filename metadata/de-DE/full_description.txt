@@ -10,7 +10,7 @@ Funktionen:
 👉 nützlich für Notizen
 👉 optional werden Änderungen beim Schließen oder Pausieren dauerhaft gespeichert
 👉 Neben den Themes lassen sich auch Schriftgröße und Stil anpassen
-👉 App Sprachen: englisch, japanisch, deutsch, russisch, französisch
+👉 App Sprachen: englisch, japanisch, deutsch, russisch, französisch, brasilianisches portugisisch
 👉 Speichern Knopf
 👉 ein kleines Widget um Notizen auf Startbildschirm zu sehen
 
@@ -20,3 +20,5 @@ Dank gilt <a href="https://github.com/xinxinxinxinxin">xin</a>  für eine franz�
 Dank gilt <a href="https://github.com/alexxxdev">Alexey</a> für eine russische Übersetzung!
 
 Dank gilt <a href="https://github.com/naofum">naofum</a> für eine japanische Übersetzung!
+
+Dank gilt <a href="https://www.youtube.com/user/Paradoxo10">Paradoxo</a> für eine brasilianisch-portugisische Übersetzung!
