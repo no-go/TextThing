@@ -2,8 +2,8 @@
     <string name="app_name">Retro Text Editor</string>
     <string name="preferences">Preferences</string>
     <string name="fontOptions">Font</string>
-    <string name="bigger">Increase font size +</string>
-    <string name="smaller">Decrease font size -</string>
+    <string name="bigger">Font size +</string>
+    <string name="smaller">Font size -</string>
     <string name="monospace">Monospace</string>
     <string name="saveNow">SAVE</string>
     <string name="autoSave">Auto-save</string>
@@ -14,7 +14,6 @@
     <string name="open">Open file…</string>
 
     <string name="info">Info</string>
-    <string name="flattr_this">Micro-Donate !</string>
     <string name="projPage">Homepage</string>
 
     <string name="themes">Themes</string>

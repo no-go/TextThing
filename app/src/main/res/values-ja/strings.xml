@@ -13,11 +13,10 @@
     <string name="errRead">読み取り時にエラー</string>
     <string name="open">ファイルを開く ...</string>
 
-    <string name="info">情報 ...</string>
-    <string name="flattr_this">マイクロ寄付 !</string>
+    <string name="info">情報 </string>
     <string name="projPage">ホームページ</string>
 
-    <string name="themes">テーマ ...</string>
+    <string name="themes">テーマ</string>
     <string name="retro">レトロ</string>
     <string name="Day">日中</string>
     <string name="Night">夜間</string>

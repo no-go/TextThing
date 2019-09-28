@@ -11,13 +11,12 @@
     <string name="errAccess">ошибка доступа</string>
     <string name="errWrite">ошибка записи</string>
     <string name="errRead">ошибка чтения</string>
-    <string name="open">Oткрыть файл …</string>
+    <string name="open">Oткрыть файл…</string>
 
-    <string name="info">Информация …</string>
-    <string name="flattr_this">Микро-Пожертвования !</string>
+    <string name="info">Информация</string>
     <string name="projPage">Домашняя страница</string>
 
-    <string name="themes">Темы …</string>
+    <string name="themes">Темы</string>
     <string name="retro">Ретро</string>
     <string name="Day">День</string>
     <string name="Night">Ночь</string>

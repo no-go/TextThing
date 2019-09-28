@@ -11,13 +11,12 @@
     <string name="errAccess">erro ao acessar</string>
     <string name="errWrite">erro na escrita</string>
     <string name="errRead">erro ao ler</string>
-    <string name="open">abrir arquivo …</string>
+    <string name="open">abrir arquivo…</string>
 
-    <string name="info">Info …</string>
-    <string name="flattr_this">"Micro-Doação!"</string>
+    <string name="info">Info</string>
     <string name="projPage">Página inicial</string>
 
-    <string name="themes">Temas …</string>
+    <string name="themes">Temas</string>
     <string name="retro">Retrô</string>
     <string name="Day">Dia</string>
     <string name="Night">Noite</string>

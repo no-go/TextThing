@@ -2,8 +2,8 @@
     <string name="app_name">Retro Text Editor</string>
     <string name="fontOptions">Schriftart</string>
     <string name="preferences">Einstellungen</string>
-    <string name="bigger">vergrößern +</string>
-    <string name="smaller">verkleiner -</string>
+    <string name="bigger">Schriftgröße +</string>
+    <string name="smaller">Schriftgröße -</string>
     <string name="monospace">Monospace</string>
     <string name="saveNow">SPEICHERN</string>
     <string name="autoSave">auto save</string>
@@ -11,13 +11,12 @@
     <string name="errAccess">Fehler bei Dateizugriff</string>
     <string name="errWrite">Fehler beim Schreiben</string>
     <string name="errRead">Fehler beim Lesen</string>
-    <string name="open">Datei öffnen …</string>
+    <string name="open">Datei öffnen…</string>
 
-    <string name="info">Info …</string>
+    <string name="info">Info</string>
     <string name="projPage">Homepage</string>
-    <string name="flattr_this">Mikro-Spende!</string>
 
-    <string name="themes">Themes …</string>
+    <string name="themes">Themes</string>
     <string name="retro">Retro</string>
     <string name="Day">Tag</string>
     <string name="Night">Nacht</string>
