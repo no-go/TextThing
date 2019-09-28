@@ -2,22 +2,22 @@
     <string name="app_name">Retro Text Editor</string>
     <string name="preferences">Preferences</string>
     <string name="fontOptions">Font</string>
-    <string name="bigger">increase +</string>
-    <string name="smaller">decrease -</string>
-    <string name="monospace">monospace</string>
+    <string name="bigger">Increase font size +</string>
+    <string name="smaller">Decrease font size -</string>
+    <string name="monospace">Monospace</string>
     <string name="saveNow">SAVE</string>
-    <string name="autoSave">auto save</string>
-    <string name="ok">ok</string>
-    <string name="errAccess">error on access</string>
-    <string name="errWrite">error on write</string>
-    <string name="errRead">error on read</string>
-    <string name="open">open file …</string>
+    <string name="autoSave">Auto-save</string>
+    <string name="ok">Saved successfully</string>
+    <string name="errAccess">Error on access</string>
+    <string name="errWrite">Error on write</string>
+    <string name="errRead">Error on read</string>
+    <string name="open">Open file…</string>
 
-    <string name="info">Info …</string>
+    <string name="info">Info</string>
     <string name="flattr_this">Micro-Donate !</string>
     <string name="projPage">Homepage</string>
 
-    <string name="themes">Themes …</string>
+    <string name="themes">Themes</string>
     <string name="retro">Retro</string>
     <string name="Day">Day</string>
     <string name="Night">Night</string>
